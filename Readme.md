@@ -1,4 +1,8 @@
-# Strave GPX Data Analysis
+# Strava GPX Data Analysis
+
+I love cycling, I have just started 1 year ago and recorded all my rides via [Strava](www.strava.com). After practicing outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com).
+
+This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook.
 
 ## Run the Project
 
