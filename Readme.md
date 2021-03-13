@@ -1,8 +1,17 @@
 # Strava GPX Data Analysis
 
-I love cycling, I have just started 1 year ago and recorded all my rides via [Strava](www.strava.com). After practicing outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com).
+I love cycling, I have just started one year ago and recorded all my rides via [Strava](www.strava.com). After practicing outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com).
 
 This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook.
+
+Folder Structure:
+
+1. `data` - Data folder contains Strava output 
+1. `Prepare Data.ipynb`
+1. `GPX Analysis.ipynb`
+1. `GPX Analysis Visualization.ipynb`
+1. `GPX Anlaysis Combined.ipynb`
+1. `Interactive Dashboard.ipynb`
 
 ## Run the Project
 
