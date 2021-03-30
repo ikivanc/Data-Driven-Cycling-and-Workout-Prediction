@@ -2,16 +2,17 @@
 
 I love cycling, I have just started one year ago and recorded all my rides via [Strava](www.strava.com). After practicing outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com).
 
-This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook.
+This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook. There's another aim for this project to predict workout days and distance as a workout companion.
 
 Folder Structure:
 
-1. `data` - Data folder contains Strava output 
+1. `data` - Data folder contains Strava output
 1. `Prepare Data.ipynb`
 1. `GPX Analysis.ipynb`
 1. `GPX Analysis Visualization.ipynb`
 1. `GPX Anlaysis Combined.ipynb`
 1. `Interactive Dashboard.ipynb`
+1. `Predict Workout.ipynb`
 
 ## Run the Project
 
