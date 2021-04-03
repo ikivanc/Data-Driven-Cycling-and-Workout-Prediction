@@ -16,3 +16,4 @@ myconfig.py
 
 # Remove model folder
 /model/
+.ipynb_checkpoints/Predict Workout Model-checkpoint.ipynb
