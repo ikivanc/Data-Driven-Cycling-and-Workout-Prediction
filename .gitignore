@@ -13,3 +13,6 @@ myconfig.py
 
 # Remove Python related files
 *.pyc
+
+# Remove model folder
+/Model/
