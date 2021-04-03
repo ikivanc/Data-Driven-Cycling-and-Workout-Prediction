@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from flask import Flask, request, jsonify, render_template
+from flask import Flask
 import pickle
 
 app = Flask(__name__)
