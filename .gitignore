@@ -15,4 +15,4 @@ myconfig.py
 *.pyc
 
 # Remove model folder
-/Model/
+/model/
