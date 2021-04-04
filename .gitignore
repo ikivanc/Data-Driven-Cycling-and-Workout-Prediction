@@ -1,12 +1,7 @@
 # Remove Data Folder from Repo
 /Data/
-.ipynb_checkpoints/GPX Analysis-checkpoint.ipynb
-.ipynb_checkpoints/GPX Analysis Combined-checkpoint.ipynb
-.ipynb_checkpoints/GPX Analysis Visualization-checkpoint.ipynb
-.ipynb_checkpoints/Interactive Dashboard-checkpoint.ipynb
-.ipynb_checkpoints/Prepare Data-checkpoint.ipynb
-.ipynb_checkpoints/Total Distance Analysis-checkpoint.ipynb
-.ipynb_checkpoints/Predict Workout-checkpoint.ipynb
+*-checkpoint.ipynb
+
 
 # Remove config file
 myconfig.py
