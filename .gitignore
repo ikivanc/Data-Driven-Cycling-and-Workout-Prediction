@@ -1,14 +1,10 @@
-# Remove Data Folder from Repo
-/Data/
-*-checkpoint.ipynb
-
+# Remove Folders from Repo
+/data/
+/model/
 
 # Remove config file
 myconfig.py
 
 # Remove Python related files
+*-checkpoint.ipynb
 *.pyc
-
-# Remove model folder
-/model/
-.ipynb_checkpoints/Predict Workout Model-checkpoint.ipynb
