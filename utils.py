@@ -7,6 +7,8 @@ from ipyleaflet import Map, Polyline
 from datetime import datetime, timedelta, time
 import requests, pickle, gzip , shutil
 from sklearn import preprocessing
+from matplotlib.axes._axes import _log as matplotlib_axes_logger
+matplotlib_axes_logger.setLevel('ERROR')
 
 # Mutual functions across notebooks
 filepath = "data/"
@@ -176,6 +178,10 @@ def get_weather(api_key,city,date,hour):
     
     response = requests.get(endpoint)
     api_results=response.json()
+
+    ## TODO
+    ## Exception handling for API daily limit:
+    ## {'data': {'error': [{'msg': 'API key has reached calls per day allowed limit.'}]}}
 
     # Weather data is splitted into 3hour slices, in below code finding hour slot for weather
     hour_slice = int(hour/3) 
