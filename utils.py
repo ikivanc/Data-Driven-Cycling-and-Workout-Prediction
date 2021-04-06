@@ -2,17 +2,13 @@ import pandas as pd
 from pathlib import Path
 from os import listdir
 from os.path import isfile, join
-import gzip
-import shutil
 from benedict import benedict as bdict
 from ipyleaflet import Map, Polyline
 from datetime import datetime, timedelta, time
-import requests
+import requests, pickle, gzip , shutil
 from sklearn import preprocessing
-import pickle
 
-
-## Mutual functions across notebooks
+# Mutual functions across notebooks
 filepath = "data/"
 fileOutputPath= filepath + "output/"
 activityPath = filepath + "activities/"
@@ -31,6 +27,7 @@ def loadData():
 def loadCleanData():
     df = pd.read_csv(filepath+ 'activities_clean.csv')
     df['Week'] = pd.to_datetime(df.Week)
+    df['Activity Date'] = pd.to_datetime(df['Activity Date']) + timedelta(hours=3)
     return df
 
 def loadCorolatedData():
@@ -42,7 +39,6 @@ def loadCorolatedData():
 def saveData(updatedData):
     updatedData.to_csv(filepath+ 'activities_clean.csv', index=False)
     print('Successfully saved!')
-
 
 def getFilename(fileextension):
     return fileextension[:-3]
@@ -124,7 +120,6 @@ def getTime(strDateTime):
     date_time_obj = date_time_obj + timedelta(hours=timezone_diff)
     return date_time_obj.strftime("%H:%M:%S")
 
-
 # 4 - GPX Analysis Combined
 def printActivityData(row):
     try:
@@ -194,7 +189,6 @@ def get_weather(api_key,city,date,hour):
     weather_desc = temp['weatherDesc'][0]['value']
 
     return int(temp_c), int(windspeed_miles), weather_desc
-
 
 # 8 - Predict Workout
 def predict_workout(api_key,city,wdate,wtime):
