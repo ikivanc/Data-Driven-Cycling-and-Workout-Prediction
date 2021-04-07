@@ -32,8 +32,8 @@ def loadCleanData():
     df['Activity Date'] = pd.to_datetime(df['Activity Date']) + timedelta(hours=3)
     return df
 
-def loadCorolatedData():
-    df = pd.read_csv(filepath+ 'activities_corolated.csv')
+def loadCorrelatedData():
+    df = pd.read_csv(filepath+ 'activities_correlated.csv')
     df['Week'] = pd.to_datetime(df.Week)
     df['Activity Date'] = pd.to_datetime(df['Activity Date']) + timedelta(hours=3)
     return df
