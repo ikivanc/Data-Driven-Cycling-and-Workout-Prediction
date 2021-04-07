@@ -35,7 +35,7 @@ def loadCleanData():
 def loadCorrelatedData():
     df = pd.read_csv(filepath+ 'activities_correlated.csv')
     df['Week'] = pd.to_datetime(df.Week)
-    df['Activity Date'] = pd.to_datetime(df['Activity Date']) + timedelta(hours=3)
+    df['Activity Date'] = pd.to_datetime(df['Activity Date'])
     return df
 
 def saveData(updatedData):
@@ -204,9 +204,10 @@ def predict_workout(api_key,city,wdate,wtime):
     
     # weather description
     le = preprocessing.LabelEncoder()
-    le.fit(['Clear' 'Cloudy' 'Light drizzle' 'Light rain shower' 'Moderate rain'
-            'Moderate rain at times' 'Overcast' 'Partly cloudy'
-            'Patchy light rain with thunder' 'Patchy rain possible' 'Sunny'])
+    le.fit(['Clear' 'Cloudy' 'Heavy rain' 'Light drizzle' 'Light rain'
+            'Light rain shower' 'Moderate rain' 'Moderate rain at times' 'Overcast'
+            'Partly cloudy' 'Patchy light rain with thunder' 'Patchy light snow'
+            'Patchy rain possible' 'Sunny'])
 
     try:
         workout_weather = int(le.transform([workout_weatherdesc])[0])
