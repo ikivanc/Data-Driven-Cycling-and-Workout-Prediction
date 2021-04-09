@@ -233,4 +233,4 @@ def predict_workout(api_key,city,wdate,wtime):
         distance_model = pickle.load(file)
     
     result = distance_model.predict([[workout_hour,workout_dayofweek,workout_isweekend,workout_temp,workout_wind,workout_weather]])
-    return result
+    return result_ridetype, result
