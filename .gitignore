@@ -9,3 +9,8 @@ myconfig.py
 *-checkpoint.ipynb
 *.pyc
 web/.azure/config
+
+# Remove Bot related
+/bot/bin
+/bot/obj
+/bot/.vs/
