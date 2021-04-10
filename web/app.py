@@ -14,17 +14,20 @@ def home():
 # http://127.0.0.1:5000/predict?city=Istanbul&date=2021-04-10&time=14:00:00
 @app.route('/predict')
 def predict():
-    # get parameters
-    city = request.args.get('city')
-    workout_date = request.args.get('date')
-    workout_time = request.args.get('time')
-    result_ridetype,result_distance = predict_workout(api_key,city,workout_date,workout_time)
+    try:
+        # get parameters
+        city = request.args.get('city')
+        workout_date = request.args.get('date')
+        workout_time = request.args.get('time')
+        result_ridetype,result_distance = predict_workout(api_key,city,workout_date,workout_time)
 
-    # Parse result
-    ride_type = "Ride" if result_ridetype[0] == 0 else "Virtual Ride"
-    distance = int(result_distance[0])
+        # Parse result
+        ride_type = "Ride" if result_ridetype[0] == 0 else "Virtual Ride"
+        distance = int(result_distance[0])
 
-    return (f"'{ride_type}' and at least {distance} km")
+        return (f"'{ride_type}' and at least {distance} km")
+    except Exception as ex:
+        return str(ex)
 
 # http://127.0.0.1:5000/predictTemp?city=Istanbul&date=2021-04-10&time=14
 @app.route('/predictTemp')

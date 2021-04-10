@@ -8,3 +8,4 @@ myconfig.py
 # Remove Python related files
 *-checkpoint.ipynb
 *.pyc
+web/.azure/config
