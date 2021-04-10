@@ -15,6 +15,7 @@ Folder Structure:
 * `6 - Interactive Dashboard.ipynb`*
 * `7 - Predict Workout Model.ipynb`*
 * `8 - Predict Workout.ipynb`*
+* `9 - Present.ipynb`* - Highlight for data analysis and results
 * `app.py` - Flask web app for prediction model*
 * `myconfig.py` - Environmental variables*
 * `utils.py` -  Common utility functions
@@ -48,3 +49,25 @@ In this sample, Python 3.8.7 version is used, to run the project.
     ```bash
     jupyter notebook
     ```
+
+## Flask Web Application for API
+
+Run Flask API for running on your local machine
+
+```bash
+cd web
+```
+
+```bash
+flask run
+```
+
+### Test endpoints:
+
+* Predict temprature
+
+    [http://127.0.0.1:5000/predictTemp?city=Istanbul&date=2021-04-10&time=14](http://127.0.0.1:5000/predictTemp?city=Istanbul&date=2021-04-10&time=14)
+
+* Predict Ride Type & Distance
+
+    [http://127.0.0.1:5000/predict?city=Istanbul&date=2021-04-10&time=14:00:00](http://127.0.0.1:5000/predict?city=Istanbul&date=2021-04-10&time=14:00:00)
