@@ -5,8 +5,10 @@
 
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,26 +19,62 @@ namespace CyclingBot.Bots
     {
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
+            dynamic value = turnContext.Activity.Value;
+
+            if (value == null)
+            {
+                string adaptiveCardPath = Path.Combine(".", "Resources", "WorkoutTemplate.json");
+                var cardAttachment = CreateAdaptiveCardAttachment(adaptiveCardPath);
+                await turnContext.SendActivityAsync(MessageFactory.Attachment(cardAttachment), cancellationToken);
+                await turnContext.SendActivityAsync(MessageFactory.Text("Please submit for your workout prediction."), cancellationToken);
+            }
+            else
+            {
+                // Retrieve the data from fields
+                string cardCity = value.cityInput;
+                string cardDate = value.dateInput;
+                string cardTime = value.timeInput;
+
+                string result = await PredictWorkout(cardCity, cardDate, cardTime);
+                
+                //Post the API response to bot again
+                await turnContext.SendActivityAsync(MessageFactory.Text(result, result), cancellationToken);
+            }
+        }
+
+        async private Task<String> PredictWorkout(string wCity, string wDate, string wTime)
+        {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
                     //Assuming that the api takes the user message as a query paramater
-                    string RequestURI = "https://datadrivencycling.azurewebsites.net/predict?city=Istanbul&date=2021-04-11&time=12:00:00";
+                    string RequestURI = String.Format("https://datadrivencycling.azurewebsites.net/predict?city={0}&date={1}&time={2}",wCity,wDate,wTime);
                     HttpResponseMessage responsemMsg = await client.GetAsync(RequestURI);
+                    string apiResponse = "";
                     if (responsemMsg.IsSuccessStatusCode)
                     {
-                        var apiResponse = await responsemMsg.Content.ReadAsStringAsync();
-
-                        //Post the API response to bot again
-                        await turnContext.SendActivityAsync(MessageFactory.Text(apiResponse, apiResponse), cancellationToken);
+                        apiResponse = await responsemMsg.Content.ReadAsStringAsync();
                     }
+
+                    return apiResponse;
                 }
             }
             catch (Exception ex)
             {
-                await turnContext.SendActivityAsync(MessageFactory.Text(ex.ToString(), ex.ToString()), cancellationToken);
+                return ex.ToString();
             }
+        }
+
+        private static Attachment CreateAdaptiveCardAttachment(string filePath)
+        {
+            var adaptiveCardJson = File.ReadAllText(filePath);
+            var adaptiveCardAttachment = new Attachment()
+            {
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(adaptiveCardJson),
+            };
+            return adaptiveCardAttachment;
         }
 
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)

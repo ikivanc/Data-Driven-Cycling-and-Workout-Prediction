@@ -1,0 +1,35 @@
+{
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "TextBlock",
+      "size": "medium",
+      "weight": "bolder",
+      "text": "Predict Workout"
+    },
+    {
+      "type": "Input.Text",
+      "value": "Istanbul",
+      "id": "cityInput"
+    },
+    {
+      "type": "Input.Date",
+      "id": "dateInput"
+    },
+    {
+      "type": "Input.Time",
+      "id": "timeInput"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Predict",
+      "id": "predictButton",
+      "style": "positive",
+      "associatedInputs": "none"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.3"
+}
