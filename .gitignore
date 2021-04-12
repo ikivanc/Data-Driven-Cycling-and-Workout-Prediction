@@ -14,3 +14,5 @@ web/.azure/config
 /bot/bin
 /bot/obj
 /bot/.vs/
+/bot/Properties/
+bot/CyclingBot.csproj.user

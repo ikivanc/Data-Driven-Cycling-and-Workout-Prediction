@@ -30,13 +30,20 @@ namespace CyclingBot.Bots
             }
             else
             {
+
+                // Test Print for Teams output
+                //await turnContext.SendActivityAsync(MessageFactory.Text(value.ToString(), value.ToString()), cancellationToken);
+
                 // Retrieve the data from fields
                 string cardCity = value.cityInput;
                 string cardDate = value.dateInput;
                 string cardTime = value.timeInput;
 
+                // Test Print for Teams output
+                //await turnContext.SendActivityAsync(MessageFactory.Text(cardCity+ cardDate + cardTime, cardCity + cardDate + cardTime), cancellationToken);
+
                 string result = await PredictWorkout(cardCity, cardDate, cardTime);
-                
+
                 //Post the API response to bot again
                 await turnContext.SendActivityAsync(MessageFactory.Text(result, result), cancellationToken);
             }
