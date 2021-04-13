@@ -1,14 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 //
-// Generated with Bot Builder V4 SDK Template for Visual Studio EchoBot v4.12.2
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using System.Threading.Tasks;
 
-namespace CyclingBot.Controllers
+namespace CyclingPrediction.Controllers
 {
     // This ASP Controller is created to handle a request. Dependency Injection will provide the Adapter and IBot
     // implementation at runtime. Multiple different IBot implementations running at different endpoints can be

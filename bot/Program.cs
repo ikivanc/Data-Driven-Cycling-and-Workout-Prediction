@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 //
-// Generated with Bot Builder V4 SDK Template for Visual Studio EchoBot v4.12.2
 
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace CyclingBot
+namespace CyclingPrediction
 {
     public class Program
     {
