@@ -6,19 +6,22 @@ This repo shows how to analyze your Strava data and visualize it on Jupyter Note
 
 Folder Structure:
 
+* `bot` - Bot application to retrieve prediciton model
 * `data` - Data folder contains Strava output*
-* `1 - GPX Analysis.ipynb`*
-* `2 - Prepare Data.ipynb`*
-* `3 - Total Distance Analysis.ipynb`*
-* `4 - GPX Anlaysis Combined.ipynb`*
-* `5 - GPX Analysis Visualization.ipynb`*
-* `6 - Interactive Dashboard.ipynb`*
-* `7 - Predict Workout Model.ipynb`*
-* `8 - Predict Workout.ipynb`*
-* `9 - Present.ipynb`* - Highlight for data analysis and results
-* `app.py` - Flask web app for prediction model*
-* `myconfig.py` - Environmental variables*
-* `utils.py` -  Common utility functions
+* `notebooks`
+  * `1 - GPX Analysis.ipynb`*
+  * `2 - Prepare Data.ipynb`*
+  * `3 - Total Distance Analysis.ipynb`*
+  * `4 - GPX Anlaysis Combined.ipynb`*
+  * `5 - GPX Analysis Visualization.ipynb`*
+  * `6 - Interactive Dashboard.ipynb`*
+  * `7 - Predict Workout Model.ipynb`*
+  * `8 - Predict Workout.ipynb`*
+  * `9 - Present.ipynb`* - Highlight for data analysis and results
+  * `app.py` - Flask web app for prediction model*
+  * `myconfig.py` - Environmental variables*
+  * `utils.py` -  Common utility functions
+* `web` - Flask Web API for prediction model
 
 ## Run the Project
 
