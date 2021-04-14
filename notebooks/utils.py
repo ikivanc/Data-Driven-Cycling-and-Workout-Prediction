@@ -11,7 +11,7 @@ from matplotlib.axes._axes import _log as matplotlib_axes_logger
 matplotlib_axes_logger.setLevel('ERROR')
 
 # Mutual functions across notebooks
-filepath = "data/"
+filepath = "../data/"
 fileOutputPath= filepath + "output/"
 activityPath = filepath + "activities/"
 activityOutputPath = fileOutputPath + "activities/"
@@ -223,7 +223,7 @@ def predict_workout(api_key,city,wdate,wtime):
     workout_isweekend = int(workout_dayofweek // 6 == 1)
     
     # Load ride type model from file
-    ridetype_model_file = "./model/ridetype_model.pkl"
+    ridetype_model_file = "../web/model/ridetype_model.pkl"
 
     with open(ridetype_model_file, 'rb') as file:
         ridetype_model = pickle.load(file)
@@ -232,7 +232,7 @@ def predict_workout(api_key,city,wdate,wtime):
     print("Result type prediction=%s" % result_ridetype)
     
     # Load distance model from file
-    distance_model_file = "./model/distance_model.pkl"
+    distance_model_file = "../web/model/distance_model.pkl"
     with open(distance_model_file, 'rb') as file:
         distance_model = pickle.load(file)
     
