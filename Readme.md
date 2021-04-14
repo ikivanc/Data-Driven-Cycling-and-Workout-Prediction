@@ -62,7 +62,7 @@ cd web
 flask run
 ```
 
-### Test endpoints:
+### Test endpoints
 
 * Predict temprature
 
@@ -71,3 +71,20 @@ flask run
 * Predict Ride Type & Distance
 
     [http://127.0.0.1:5000/predict?city=Istanbul&date=2021-04-10&time=14:00:00](http://127.0.0.1:5000/predict?city=Istanbul&date=2021-04-10&time=14:00:00)
+
+## Publish Web App
+
+Publish python flask web app to Azure Web App service
+
+```bash
+cd web
+
+az webapp up --sku B1 --name data-driven-cycling
+
+```
+
+to re-deploy and update existing application:
+
+```bash
+az webapp up
+```
