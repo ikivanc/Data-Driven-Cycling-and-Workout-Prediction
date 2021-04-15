@@ -1,6 +1,8 @@
 # Strava GPX Data Analysis
 
-I love cycling, I have just started one year ago and recorded all my rides via [Strava](www.strava.com). After practicing outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com).
+I started cycling with a foldable bike end of January 2020 and I felt in love with cycling. From March to May we were under lock down, after that I upgraded my bike to a Gravel bike. It was nice time with my new bike and I’ve completed “3700km” so far 🎉🎉 looking forward to ride more! 🚴🏻🚴🏻
+
+I have just started one year ago and recorded all my rides via [Strava](www.strava.com). After practicing outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com).
 
 This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook. There's another aim for this project to predict workout days and distance as a workout companion.
 
@@ -9,15 +11,15 @@ Folder Structure:
 * `bot` - Bot application to retrieve prediciton model
 * `data` - Data folder contains Strava output*
 * `notebooks`
-  * `1 - GPX Analysis.ipynb`*
-  * `2 - Prepare Data.ipynb`*
-  * `3 - Total Distance Analysis.ipynb`*
-  * `4 - GPX Anlaysis Combined.ipynb`*
-  * `5 - GPX Analysis Visualization.ipynb`*
-  * `6 - Interactive Dashboard.ipynb`*
-  * `7 - Predict Workout Model.ipynb`*
-  * `8 - Predict Workout.ipynb`*
-  * `9 - Present.ipynb`* - Highlight for data analysis and results
+  * `1 - GPX Analysis.ipynb`
+  * `2 - Prepare Data.ipynb`
+  * `3 - Total Distance Analysis.ipynb`
+  * `4 - GPX Anlaysis Combined.ipynb`
+  * `5 - GPX Analysis Visualization.ipynb`
+  * `6 - Interactive Dashboard.ipynb`
+  * `7 - Predict Workout Model.ipynb`
+  * `8 - Predict Workout.ipynb`
+  * `9 - Present.ipynb` - Highlight for data analysis and results
   * `app.py` - Flask web app for prediction model*
   * `myconfig.py` - Environmental variables*
   * `utils.py` -  Common utility functions
@@ -36,7 +38,7 @@ In this sample, Python 3.8.7 version is used, to run the project.
 1. Install dependencies
 
     ```bash
-    pip install -r requirements.txt
+    pip install -r notebooks/requirements.txt
     ```
 
 1. Export your Strava Data from your profile
