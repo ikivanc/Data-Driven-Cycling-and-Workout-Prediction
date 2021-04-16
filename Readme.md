@@ -8,13 +8,33 @@ After practicing outside with nice weather, for cold weather I setup a pain-cave
 
 This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook. There's another aim for this project to predict workout days and distance to find your routine using your own data. You can use this digital personal trainer as a workout companion.
 
+## Highlights
+
+During this time, I've completed around 3700km, here are some highlights about my data.
+
+1. Outdoor and indoor workout distribution.
+
+    ![distance per ride type](images/distance_per_ride_types.png)
+
+2. I lost ~13kgs (~28lbs) during this time
+
+    ![kg per month](images/kg_per_monh.png)
+
+3. Weekly total ride distance
+
+    ![Weekly total ride distance](images/distance_per_week.png)
+
+4. Distance per ride
+
+    ![Distance per ride](images/distance_per_ride.png)
+
 ## Solution
 
-Solution contains data analysis, web api and conversational AI(bot) projects.
+Solution contains data analysis, web API and conversational AI(bot) projects.
 
 Folder Structure:
 
-* `bot` - Bot application to retrieve prediciton model
+* `bot` - Bot application to retrieve prediction model
 * `data` - Data folder contains Strava output*
 * `notebooks`
   * `1 - GPX Analysis.ipynb`
@@ -75,7 +95,7 @@ flask run
 
 ### Test endpoints
 
-* Predict temprature
+* Predict temperature
 
     [http://127.0.0.1:5000/predictTemp?city=Istanbul&date=2021-04-10&time=14](http://127.0.0.1:5000/predictTemp?city=Istanbul&date=2021-04-10&time=14)
 
