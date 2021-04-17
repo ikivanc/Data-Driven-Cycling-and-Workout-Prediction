@@ -31,8 +31,9 @@ def get_weather(api_key,city,date,hour):
     temp_c = temp['tempC']
     windspeed_miles = temp['windspeedMiles']
     weather_desc = temp['weatherDesc'][0]['value']
+    weather_icon = temp['weatherIconUrl'][0]['value']
 
-    return int(temp_c), int(windspeed_miles), weather_desc
+    return int(temp_c), int(windspeed_miles), weather_desc, weather_icon
 
 
 import os
@@ -41,7 +42,7 @@ import os
 def predict_workout(api_key,city,wdate,wtime):
     wtime = time.fromisoformat(wtime)
     temp_data = get_weather(api_key,city,wdate,wtime.hour)
-    workout_temp, workout_wind , workout_weatherdesc = temp_data
+    workout_temp, workout_wind , workout_weatherdesc, workout_weathericon = temp_data
     
     # weather description
     le = preprocessing.LabelEncoder()
@@ -75,4 +76,4 @@ def predict_workout(api_key,city,wdate,wtime):
         distance_model = pickle.load(file)
     
     result = distance_model.predict([[workout_hour,workout_dayofweek,workout_isweekend,workout_temp,workout_wind,workout_weather]])
-    return result_ridetype, result
+    return workout_temp, workout_wind , workout_weatherdesc, workout_weathericon, result_ridetype, result

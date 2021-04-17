@@ -19,13 +19,13 @@ def predict():
         city = request.args.get('city')
         workout_date = request.args.get('date')
         workout_time = request.args.get('time')
-        result_ridetype,result_distance = predict_workout(api_key,city,workout_date,workout_time)
+        workout_temp, workout_wind , workout_weatherdesc, workout_weathericon, result_ridetype, result_distance = predict_workout(api_key,city,workout_date,workout_time)
 
         # Parse result
         ride_type = "Ride" if result_ridetype[0] == 0 else "Virtual Ride"
         distance = int(result_distance[0])
 
-        return (f"'{ride_type}' and at least {distance} km")
+        return {"temp": workout_temp, "wind": workout_wind , "weather": workout_weatherdesc,"weathericon": workout_weathericon,"ride": ride_type, "distance": distance }
     except Exception as ex:
         return str(ex)
 
