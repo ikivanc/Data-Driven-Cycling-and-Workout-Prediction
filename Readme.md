@@ -16,21 +16,21 @@ This repo shows how to analyze your Strava data and visualize it on Jupyter Note
 
 ## Highlights
 
-Let's have a look at some highlights I achieved so far, I've completed around 3700km, here are some highlights about my data.
+Let's have a look at some highlights I achieved so far, here are some highlights about my data.
 
-1. Outdoor and indoor workout distribution.
+1. In 1 year I've completed around **3700 km** including outdoor and indoor workout activities. Around 1 of 3rd is virtual ride on Zwift.
 
     ![distance per ride type](images/distance_per_ride_types.png)
 
-2. I lost ~13kgs (~28lbs) during this time
+2. In 2019 I gain some fat, so after my activities and healthy food as a result I lost ~13kgs (~28lbs) during this time.
 
     ![kg per month](images/kg_per_monh.png)
 
-3. Weekly total ride distance
+3. I love this weekly graph showcasing all important life events happened in one year. Started with a passion then lockdown due to pandemic in Turkey, then enjoying riding then new year break challenge #Rapha500, then blessed with a new family member, then trying to find my old routine again, last but not least decided to build a personal trainer.
 
     ![Weekly total ride distance](images/distance_per_week.png)
 
-4. Distance per ride
+4. So far my longest distance in one ride is 62km, and I love this graph to show my performance over time.
 
     ![Distance per ride](images/distance_per_ride.png)
 
