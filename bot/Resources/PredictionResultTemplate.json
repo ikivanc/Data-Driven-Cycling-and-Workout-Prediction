@@ -1,0 +1,129 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "TextBlock",
+            "size": "Medium",
+            "weight": "Bolder",
+            "text": "Workout Prediction"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "style": "Person",
+                            "url": "http://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0004_black_low_cloud.png",
+                            "size": "Small"
+                        }
+                    ],
+                    "width": "auto",
+                    "height": "stretch"
+                },
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "weight": "Bolder",
+                            "wrap": true,
+                            "text": "Cloudy"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "spacing": "None",
+                                            "text": "Temp:",
+                                            "isSubtle": true,
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "12 C",
+                                            "wrap": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "spacing": "None",
+                                            "text": "Wind:",
+                                            "isSubtle": true,
+                                            "wrap": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "10 km/h",
+                                            "wrap": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "width": "stretch"
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Outdoor",
+                            "wrap": true,
+                            "height": "stretch",
+                            "size": "ExtraLarge",
+                            "color": "Dark",
+                            "fontType": "Default",
+                            "spacing": "None",
+                            "horizontalAlignment": "Right"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "16 km",
+                            "height": "stretch",
+                            "size": "ExtraLarge",
+                            "color": "Dark",
+                            "fontType": "Default",
+                            "spacing": "None",
+                            "wrap": true,
+                            "horizontalAlignment": "Right"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2"
+}
