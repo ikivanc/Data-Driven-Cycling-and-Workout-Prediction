@@ -6,6 +6,8 @@ I started cycling with a foldable bike at end of January 2020 and I felt in love
 
 At the end of may I upgraded my city bike to a Gravel bike. I had great time with my new bike with outdoor activities until autumn.
 
+![outdoor ride activities](images/outdoor_ride.png)
+
 After practicing outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com) using [Elite Arion AL13 roller](https://www.elite-it.com/en/products/home-trainers/rollers/arion) with [Misuro B+ sensor](https://www.elite-it.com/en/products/home-trainers/sensors/misuro-b). Zwift is a virtual environment where you connect with your 3D avatar to ride with other athletes real-time.
 
 Also my Zwift account is also connected with Strava to collect all my ride data. I’ve completed **“3700km”** so far combining outdoor and indoor activities 🎉🎉
