@@ -22,7 +22,7 @@ def predict():
         workout_temp, workout_wind , workout_weatherdesc, workout_weathericon, result_ridetype, result_distance = predict_workout(api_key,city,workout_date,workout_time)
 
         # Parse result
-        ride_type = "Ride" if result_ridetype[0] == 0 else "Virtual Ride"
+        ride_type = "Outdoor Ride" if result_ridetype[0] == 0 else "Virtual Ride"
         distance = int(result_distance[0])
 
         return {"temp": workout_temp, "wind": workout_wind , "weather": workout_weatherdesc,"weathericon": workout_weathericon,"ride": ride_type, "distance": distance }
@@ -41,7 +41,6 @@ def predict_temp():
     temp, wind, weather_desc  = get_weather(api_key,city,workout_date,workout_time)
 
     return (f"Temprature:{temp} C, Wind:{wind}, Description:{weather_desc}")
-
 
 if __name__ == '__main__':
 	app.run(port = 5000, debug=True)
