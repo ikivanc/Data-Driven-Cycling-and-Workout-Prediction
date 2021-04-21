@@ -128,8 +128,11 @@ to re-deploy and update existing application:
 az webapp up
 ```
 
-## Run Bot Framework
+## Bot on Microsoft Teams
 
-Data Driven Cycling Bot
+After you publish the bot you can connect with different conversational UI.
+I've connected with Microsoft Teams and named as `Data Driven Cycling Bot`.
+
+Once you send first message, it's sending a card to pick `City`, `Date` and `Time` information to predict workout ride type and minimum distance.
 
 ![Distance per ride](images/data_driven_cycling_bot.png)
