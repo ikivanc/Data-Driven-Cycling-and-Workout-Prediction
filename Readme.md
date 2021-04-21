@@ -127,3 +127,9 @@ to re-deploy and update existing application:
 ```bash
 az webapp up
 ```
+
+## Run Bot Framework
+
+Data Driven Cycling Bot
+
+![Distance per ride](images/data_driven_cycling_bot.png)
