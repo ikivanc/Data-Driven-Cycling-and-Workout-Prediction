@@ -128,6 +128,33 @@ to re-deploy and update existing application:
 az webapp up
 ```
 
+## Test Bot Application on Local
+
+Prerequisite:
+
+* [.NET Core SDK](https://dotnet.microsoft.com/download) version 3.1
+
+```bash
+cd bot
+dotnet run
+```
+
+Or from Visual Studio
+
+* Launch Visual Studio
+* File -> Open -> Project/Solution
+* Navigate to `bot` folder
+* Select `CyclingPrediction.csproj` file
+* Press `F5` to run the project
+
+Your bot service will be available at [https://localhost:3979](https://localhost:3979)
+
+Run your Bot Framework Emulator and connect to [https://localhost:3979](https://localhost:3979) endpoint
+
+![Bot on Emulator for test](images/data_driven_cycling_bot_emulator.png)
+
+After that your bot is ready for interaction.
+
 ## Bot on Microsoft Teams
 
 After you publish the bot you can connect with different conversational UI.
@@ -135,4 +162,4 @@ I've connected with Microsoft Teams and named as `Data Driven Cycling Bot`.
 
 Once you send first message, it's sending a card to pick `City`, `Date` and `Time` information to predict workout ride type and minimum distance.
 
-![Distance per ride](images/data_driven_cycling_bot.png)
+![Bot on Microsoft Teams](images/data_driven_cycling_bot.png)
