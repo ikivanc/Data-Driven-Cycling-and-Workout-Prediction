@@ -10,6 +10,8 @@ At the end of may I upgraded my city bike to a Gravel bike. I had great time wit
 
 After practicing outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com) using [Elite Arion AL13 roller](https://www.elite-it.com/en/products/home-trainers/rollers/arion) with [Misuro B+ sensor](https://www.elite-it.com/en/products/home-trainers/sensors/misuro-b). Zwift is a virtual environment where you connect with your 3D avatar to ride with other athletes real-time.
 
+![indoor ride activities](images/indoor_ride.png)
+
 Also my Zwift account is also connected with Strava to collect all my ride data. I’ve completed **“3700km”** so far combining outdoor and indoor activities 🎉🎉
 
 I've decided to analyze my data and after analyzing I've decided to take this to next level with my engineering capabilities.
