@@ -18,6 +18,8 @@ I've decided to analyze my data and after analyzing I've decided to take this to
 
 This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook. There's another aim for this project to predict workout days and distance to find your routine using your own data. You can use this digital personal trainer as a workout companion.
 
+![architecture](images/architecture.png)
+
 ## Highlights
 
 Let's have a look at some highlights I achieved so far, here are some highlights about my data.
@@ -41,6 +43,10 @@ Let's have a look at some highlights I achieved so far, here are some highlights
 ## Solution
 
 Solution contains data analysis, web API and conversational AI(bot) projects.
+
+### Architecture
+
+![architecture](images/architecture.png)
 
 Folder Structure:
 
