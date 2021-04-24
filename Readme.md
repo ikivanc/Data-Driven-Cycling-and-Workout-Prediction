@@ -62,11 +62,11 @@ Folder Structure:
   * `7 - Predict Workout Model.ipynb`
   * `8 - Predict Workout.ipynb`
   * `9 - Present.ipynb` - Highlight for data analysis and results
-  * `app.py` - Flask web app for prediction model*
-  * `myconfig.py` - Environmental variables*
-  * `utils.py` -  Common utility functions
-* `web` - Flask Web API for prediction model
+* `web` - FastAPI for prediction model
   * `model` - Contains models for prediction
+  * `app.py` - FastAPI web app for prediction model
+  * `myconfig.py` - Environmental variables
+  * `utils.py` -  Common utility functions
 
 ## Run the Project
 
@@ -98,37 +98,40 @@ In this sample, Python 3.8.7 version is used, to run the project.
     jupyter notebook
     ```
 
-## Flask Web Application for API
+## Python FastAPI Web Application for API
 
-Run Flask API for running on your local machine
+Run Python FastAPI for running on your local machine
 
 ```bash
 cd web
 ```
 
 ```bash
-flask run
+python app.py
 ```
 
-### Test endpoints
-
-* Predict temperature
-
-    [http://127.0.0.1:5000/predictTemp?city=Istanbul&date=2021-04-10&time=14](http://127.0.0.1:5000/predictTemp?city=Istanbul&date=2021-04-10&time=14)
+### Test endpoint
 
 * Predict Ride Type & Distance
 
-    [http://127.0.0.1:5000/predict?city=Istanbul&date=2021-04-10&time=14:00:00](http://127.0.0.1:5000/predict?city=Istanbul&date=2021-04-10&time=14:00:00)
+    [http://127.0.0.1:8000/predict?city=Istanbul&date=2021-04-10&time=14:00:00](http://127.0.0.1:8000/predict?city=Istanbul&date=2021-04-10&time=14:00:00)
 
 ## Publish Web App
 
-Publish python flask web app to Azure Web App service
+Publish Python FastAPI to Azure Web App service
 
 ```bash
 cd web
 
 az webapp up --sku B1 --name data-driven-cycling
 
+```
+
+Update startup command on Azure Portal,  
+Settings > Configuration > General settings > Startup Command
+
+```bash
+gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
 ```
 
 to re-deploy and update existing application:
