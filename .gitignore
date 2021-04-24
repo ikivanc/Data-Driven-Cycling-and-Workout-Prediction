@@ -1,6 +1,7 @@
 # Remove Folders from Repo
 /data/
 /model/
+/web/model/
 
 # Remove config file
 myconfig.py

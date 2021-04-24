@@ -66,6 +66,7 @@ Folder Structure:
   * `myconfig.py` - Environmental variables*
   * `utils.py` -  Common utility functions
 * `web` - Flask Web API for prediction model
+  * `model` - Contains models for prediction
 
 ## Run the Project
 
