@@ -1,3 +1,7 @@
 pandas
 python-benedict
 sklearn
+fastapi
+uvicorn
+uvloop
+httptools
