@@ -18,9 +18,11 @@ I've decided to analyze my data and after analyzing I've decided to take this to
 
 This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook. There's another aim for this project to predict workout days and distance to find your routine using your own data. You can use this digital personal trainer as a workout companion.
 
+First this project started as data discovery of existing bulk data on Jupyter Notebook, during data exploration phase I saw some patterns and though that, these patterns can help me to get back to my shape again. Shortly after decided to build a predictive model to predict my workout, `ride type` and  `distance`, tried to find best possible fit for prediction. To use prediction model, exported as pickle file and serve that model in Python FastAPI then a chat bot on teams using the API helped me to provide some inputs and then retrieve prediction. 
+
 ![architecture](images/architecture.png)
 
-## Highlights
+## Data Discovery - Highlights
 
 Let's have a look at some highlights I achieved so far, here are some highlights about my data.
 
@@ -42,7 +44,7 @@ Let's have a look at some highlights I achieved so far, here are some highlights
 
 ## Solution
 
-Solution contains data analysis, web API and conversational AI(bot) projects.
+Solution contains data analysis, web API and conversational AI(bot) projects. 
 
 ### Architecture
 
@@ -51,7 +53,7 @@ Solution contains data analysis, web API and conversational AI(bot) projects.
 Folder Structure:
 
 * `bot` - Bot application to retrieve prediction model
-* `data` - Data folder contains Strava output*
+* `data` - Data folder contains Strava output
 * `notebooks`
   * `1 - GPX Analysis.ipynb`
   * `2 - Prepare Data.ipynb`
