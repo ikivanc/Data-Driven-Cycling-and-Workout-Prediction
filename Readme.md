@@ -42,9 +42,27 @@ Let's have a look at some highlights I achieved so far, here are some highlights
 
     ![Distance per ride](images/distance_per_ride.png)
 
+## Feature Engineering
+
+TBD
+
+## Corelation
+
+TBD
+
+## Prediction Model Traning
+
+TBD
+
+## Prediction Model Scoring
+
+TBD
+
 ## Solution
 
-Solution contains data analysis, web API and conversational AI(bot) projects. 
+TBD
+
+Solution contains data analysis, web API and conversational AI(bot) projects.
 
 ### Architecture
 
@@ -99,6 +117,10 @@ In this sample, Python 3.8.7 version is used, to run the project.
     ```bash
     jupyter notebook
     ```
+
+## Weather API
+
+TBD
 
 ## Python FastAPI Web Application for API
 
