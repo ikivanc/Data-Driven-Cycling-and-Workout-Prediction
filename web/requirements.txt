@@ -5,3 +5,4 @@ fastapi
 uvicorn
 uvloop
 httptools
+python-dotenv

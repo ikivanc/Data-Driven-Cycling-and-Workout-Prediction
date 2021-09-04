@@ -1,5 +1,6 @@
 from utils import *
-from myconfig import *
+import os
+from dotenv import load_dotenv
 
 # Fast API libraries
 from fastapi import FastAPI
@@ -17,6 +18,10 @@ def home():
 @app.get("/predict")
 def predict(city: str, date: str, time: str):
     try:
+        # get api key from environment variables
+        load_dotenv()
+        api_key = os.getenv("WEATHER_API_KEY") 
+
         # get parameters
         (workout_temp,
          workout_wind,

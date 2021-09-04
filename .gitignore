@@ -17,3 +17,4 @@ web/.azure/config
 /bot/.vs/
 /bot/Properties/
 bot/CyclingBot.csproj.user
+web/.env
