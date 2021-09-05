@@ -1,5 +1,5 @@
-from utils import *
 import os
+from utils import *
 from dotenv import load_dotenv
 
 # Fast API libraries
@@ -17,10 +17,15 @@ def home():
 # http://127.0.0.1:8000/predict?city=Istanbul&date=2021-04-19&time=14:00
 @app.get("/predict")
 def predict(city: str, date: str, time: str):
+    """
+    This function uses city name, date of the ride and time as parameters
+    returns prediction of ride type, ride distance and weather conditions
+    these values will be presented to user
+    """
     try:
-        # get api key from environment variables
+        # load and get api key from environment variables
         load_dotenv()
-        api_key = os.getenv("WEATHER_API_KEY") 
+        api_key = os.getenv("WEATHER_API_KEY")
 
         # get parameters
         (workout_temp,
@@ -30,15 +35,16 @@ def predict(city: str, date: str, time: str):
          result_ridetype,
          result_distance) = predict_workout(api_key, city, date, time)
 
-        # Parse result
-        ride_type = "Outdoor Ride" if result_ridetype[0] == 0 else "Virtual Ride"
+        # parse results
+        ridetype = "Outdoor Ride" if result_ridetype[0] == 0 else "Indoor Ride"
         distance = int(result_distance[0])
 
+        # return results
         return {"temp": workout_temp,
                 "wind": workout_wind,
                 "weather": workout_weatherdesc,
                 "weathericon": workout_weathericon,
-                "ride": ride_type,
+                "ride": ridetype,
                 "distance": distance}
     except Exception as ex:
         return str(ex)
