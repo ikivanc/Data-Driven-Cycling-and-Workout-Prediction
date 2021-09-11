@@ -42,17 +42,11 @@ Let's have a look at some highlights I achieved so far, here are some highlights
 
     ![Distance per ride](images/distance_per_ride.png)
 
-## Corelation
+## Correlation
 
-While I was checking ride type over time, I realized that after a point I only switched to Virtual Ride
-
-![Distance per ride](images/distance_per_ride.png)
-
-And I wanted to correlate with `Wind` and `Temperature and results were clear, I don't like cycling at cold weathers, so after a point I switched back to just Virtual Rides, and below graph shows that after a certain degree I pick Virtual Ride.
+While I was checking ride type over time, I realized that after a point I only switched to Virtual Ride and I wanted to correlate with `Wind` and `Temperature, I used a Weather API to retrieve Weather condition during my workouts and results were clear, I don't like cycling at cold, rainy weathers, so after a point I switched back to just Virtual Rides, and below graph shows that after a certain degree I picked Virtual Ride. This is one of the features, I have added into my model for prediction.
 
 ![Distance per ride](images/ridetype_vs_temp.png)
-
-This is one of the features, I have added into my model
 
 ## Feature Engineering
 
@@ -60,10 +54,25 @@ I spent some time to visualize my ride data using Jupyter Notebook and I found s
 
 I decided to do excercise on [Feature Engineering](https://en.wikipedia.org/wiki/Feature_engineering)
 
-  ![Distance vs isWeekend](images/distance_vs_isweekend.png)
+### 1. Weather condition
+
+As mentioned in [correlation](#correlation), weather is one of the feature that effects my workout plan:
+
+* `Temperature` - Celcius value as integer
+* `Wind` - km/h value as integer
+* `Weather Description` - Description if weather is cloudy, sunny, rainy etc.
+
+### 2. Is Weekend?
+
+When I plot distance over if it's weekend or weekdays, my longest rides were on the weekend, also public holidays were another factor but for my model however I haven't integrated those for now, I will include these into model too
 
   ![Distance per ride](images/day_of_the_week.png)
 
+But mostly I picked Tuesday and Thursday as weekday short ride days, but there's no dominance, so decided to use weekends as flag
+
+  ![Distance vs isWeekend](images/distance_vs_isweekend.png)
+
+* `isWeekend` - boolean flag
 
 ## Prediction Model Traning
 
