@@ -42,13 +42,28 @@ Let's have a look at some highlights I achieved so far, here are some highlights
 
     ![Distance per ride](images/distance_per_ride.png)
 
-## Feature Engineering
-
-TBD
-
 ## Corelation
 
-TBD
+While I was checking ride type over time, I realized that after a point I only switched to Virtual Ride
+
+![Distance per ride](images/distance_per_ride.png)
+
+And I wanted to correlate with `Wind` and `Temperature and results were clear, I don't like cycling at cold weathers, so after a point I switched back to just Virtual Rides, and below graph shows that after a certain degree I pick Virtual Ride.
+
+![Distance per ride](images/ridetype_vs_temp.png)
+
+This is one of the features, I have added into my model
+
+## Feature Engineering
+
+I spent some time to visualize my ride data using Jupyter Notebook and I found some patterns. These patterns were either concious decisions by me or some decisions due to conditions.
+
+I decided to do excercise on [Feature Engineering](https://en.wikipedia.org/wiki/Feature_engineering)
+
+  ![Distance vs isWeekend](images/distance_vs_isweekend.png)
+
+  ![Distance per ride](images/day_of_the_week.png)
+
 
 ## Prediction Model Traning
 
