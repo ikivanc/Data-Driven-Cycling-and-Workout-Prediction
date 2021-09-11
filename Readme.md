@@ -54,7 +54,13 @@ I spent some time to visualize my ride data using Jupyter Notebook and I found s
 
 I decided to do excercise on [Feature Engineering](https://en.wikipedia.org/wiki/Feature_engineering)
 
-### 1. Weather condition
+### 1. Ride Type
+
+Ride type is a big factor for duration of the training and day of the training, so  I added a flag as if workout is a Outdoor Ride or Indoor Ride
+
+* rideType - boolean flag
+
+### 2. Weather condition
 
 As mentioned in [correlation](#correlation), weather is one of the feature that effects my workout plan:
 
@@ -62,17 +68,27 @@ As mentioned in [correlation](#correlation), weather is one of the feature that 
 * `Wind` - km/h value as integer
 * `Weather Description` - Description if weather is cloudy, sunny, rainy etc.
 
-### 2. Is Weekend?
+### 3. Day of the Week and Weekend
 
 When I plot distance over if it's weekend or weekdays, my longest rides were on the weekend, also public holidays were another factor but for my model however I haven't integrated those for now, I will include these into model too
 
+* `DayOfWeek` - integer
+
   ![Distance per ride](images/day_of_the_week.png)
 
-But mostly I picked Tuesday and Thursday as weekday short ride days, but there's no dominance, so decided to use weekends as flag
+But mostly I picked Tuesday and Thursday as weekday short ride days, and decided to add week of the day as a feature and use weekends as flag based on below graph
+
+* `isWeekend` - boolean flag
 
   ![Distance vs isWeekend](images/distance_vs_isweekend.png)
 
-* `isWeekend` - boolean flag
+### 4. Hour of the Day
+
+Especially for hot summer days I do prefer early outdoor rides where temperature is cooler than noon time. So based on my plot hour of the day is effecting my ride and ride type as well so decided to add a feature for hour of the day
+
+* `hour` - integer
+
+  ![Distance vs Hour of the day](images/distance_vs_hour.png)
 
 ## Prediction Model Traning
 
