@@ -60,7 +60,7 @@ Ride type is a big factor for duration of the training and day of the training, 
 
 * rideType - boolean flag
 
-### 2. Weather condition
+### 2. Weather Condition
 
 As mentioned in [correlation](#correlation), weather is one of the feature that effects my workout plan:
 
@@ -160,7 +160,7 @@ In this sample, Python 3.8.7 version is used, to run the project.
 
 ## Weather API
 
-TBD
+Weather data was not avaiable to [correlate](#correlation) with my workouts, so I've used a weather API to extract weather information for my existing workout days. I've used [WorldWeatherOnline API](https://www.worldweatheronline.com/developer/) for The latest weather forecasts for my ride locations. This API also offers weather forecasts up to 14 days in advance, hourly forecasting and weather warnings so this is very helpful for my prediction API as well.
 
 ## Python FastAPI Web Application for API
 
