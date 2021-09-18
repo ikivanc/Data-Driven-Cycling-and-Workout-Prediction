@@ -118,15 +118,15 @@ I have decided to pick `Logistic Regression` for ride type and `Linear Regressio
 
 There is a nice [Machine Learning algorithm cheat sheet](https://docs.microsoft.com/en-us/azure/machine-learning/algorithm-cheat-sheet). You can learn more about ML algorithms and their applications.
 
-## Prediction Model Scoring
-
-TBD
-
 ## Solution
 
-TBD
+This is end to end solution, using Strava workout data exports as input. Strava contains indoor and outdoor workout ride data. To analyse the data, Jupyter Notebook is used for `Data Cleaning`, `Data Pre-Processing`, `Model Training` and `Model Export. For machine learning model training and prediction scikit-learn is used. Prediction model is exported using scikit-learn to predict my ride type and distance of my workout.
 
-Solution contains data analysis, web API and conversational AI(bot) projects.
+Model, as a pickle file is hosted in a FastAPI, provides an API interface to pass parameters and predict weather information using 3rd party weather api and these values are used by model for prediction.
+
+For user interaction interface, I've created a Conversational AI project using BotFramework to communicate with Fast API. I picked Microsoft Teams to use as canvas, since everyday I'm regularly using this platform to communicate.
+
+With this solution now I can select my city, workout date and time, these selections provide weather forecast and use these parameters with my prediction model to provide `Distance` and `ride type` predictions.
 
 ### Architecture
 
