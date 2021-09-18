@@ -92,7 +92,13 @@ Especially for hot summer days I do prefer early outdoor rides where temperature
 
 ## Prediction Model Traning
 
-TBD
+For my personal need and after data analysis I want to have prediction of my rides. I want to know `distance`, how many kilometers I'll ride and what will be the `ride type`, is it indoor ride or outdoor ride.
+
+I did some data analysis and had feature engineering to have prediction for `Distance` and `Ride Type`.
+
+### Ride Type Prediction
+
+As a mental preperation there are differences between riding indoor and outdoor, so generally I do prepare my self and my ride equipment the day before for my workout based on my ride type. I do prefer going outside however I don't like rainy and cold days as well so I want to find my optimum for the ride.
 
 ## Prediction Model Scoring
 
