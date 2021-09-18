@@ -98,7 +98,25 @@ I did some data analysis and had feature engineering to have prediction for `Dis
 
 ### Ride Type Prediction
 
-As a mental preperation there are differences between riding indoor and outdoor, so generally I do prepare my self and my ride equipment the day before for my workout based on my ride type. I do prefer going outside however I don't like rainy and cold days as well so I want to find my optimum for the ride.
+For mental preperation, there are differences between riding indoor and outdoor, so generally I do prepare myself and my ride equipments the day before for my workout based on my ride type. I do prefer going outside however I don't like rainy and cold weather as well so I want to find my optimum for the ride.
+
+This choice is also effecting my distance and hour of workout.
+It's a classification problem, so I have decided to pick `Logistic Regression` for predicting ride type.
+
+### Distance Prediction
+
+For weakly goals I set weekly distance goals to complete. To reach my target there are some out side factors such as at "what time of the day?", "How is the weather?", "Is it hot outside or cold outside?", "Is it windy?", "Is it weekend or weekday?"
+
+After these questions I set my actual target, this is more like
+`Regression` problem and I've decided to pick `Linear Regression` for distance prection.
+
+For predicting **distance** and **ride type** I did a little bit feature engineering and pick some features. I below values effecting my ride type and distance as features for my model.
+
+> `['hour','dayOfWeek','isWeekend','temp','wind','weather']`
+
+I have decided to pick `Logistic Regression` for ride type and `Linear Regression` for distance. Ofcourse there can be more accurate models, it's an iterative process and whenever I collect more ride data and correlate with more data I would like to improve prediction accuracy, so this is just start.
+
+There is a nice [Machine Learning algorithm cheat sheet](https://docs.microsoft.com/en-us/azure/machine-learning/algorithm-cheat-sheet). You can learn more about ML algorithms and their applications.
 
 ## Prediction Model Scoring
 
