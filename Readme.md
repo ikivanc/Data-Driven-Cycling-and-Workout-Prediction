@@ -1,4 +1,4 @@
-# Strava GPX Data Analysis
+# Cycling Workout Prediction & Strava GPX Data Analysis
 
 ## Overview
 
@@ -64,7 +64,7 @@ Ride type is a big factor for duration of the training and day of the training, 
 
 As mentioned in [correlation](#correlation), weather is one of the feature that effects my workout plan:
 
-* `Temperature` - Celcius value as integer
+* `Temperature` - Celsius value as integer
 * `Wind` - km/h value as integer
 * `Weather Description` - Description if weather is cloudy, sunny, rainy etc.
 
@@ -90,7 +90,7 @@ Especially for hot summer days I do prefer early outdoor rides where temperature
 
   ![Distance vs Hour of the day](images/distance_vs_hour.png)
 
-## Prediction Model Traning
+## Prediction Model Training
 
 For my personal need and after data analysis I want to have prediction of my rides. I want to know `distance`, how many kilometers I'll ride and what will be the `ride type`, is it indoor ride or outdoor ride.
 
@@ -114,7 +114,7 @@ For predicting **distance** and **ride type** I did a little bit feature enginee
 
 > `['hour','dayOfWeek','isWeekend','temp','wind','weather']`
 
-I have decided to pick `Logistic Regression` for ride type and `Linear Regression` for distance. Ofcourse there can be more accurate models, it's an iterative process and whenever I collect more ride data and correlate with more data I would like to improve prediction accuracy, so this is just start.
+I have decided to pick `Logistic Regression` for ride type and `Linear Regression` for distance. Of course there can be more accurate models, it's an iterative process and whenever I collect more ride data and correlate with more data I would like to improve prediction accuracy, so this is just start.
 
 There is a nice [Machine Learning algorithm cheat sheet](https://docs.microsoft.com/en-us/azure/machine-learning/algorithm-cheat-sheet). You can learn more about ML algorithms and their applications.
 
@@ -257,8 +257,7 @@ After that your bot is ready for interaction.
 
 ## Bot on Microsoft Teams
 
-After you publish the bot you can connect with different conversational UI.
-I've connected with Microsoft Teams and named as `Data Driven Cycling Bot`.
+After you publish the bot you can connect with different conversational UI. I've connected with Microsoft Teams and named as `Data Driven Cycling Bot`.
 
 Once you send first message, it's sending a card to pick `City`, `Date` and `Time` information to predict workout ride type and minimum distance.
 
