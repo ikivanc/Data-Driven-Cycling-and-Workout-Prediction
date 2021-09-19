@@ -118,6 +118,78 @@ I have decided to pick `Logistic Regression` for ride type and `Linear Regressio
 
 There is a nice [Machine Learning algorithm cheat sheet](https://docs.microsoft.com/en-us/azure/machine-learning/algorithm-cheat-sheet). You can learn more about ML algorithms and their applications.
 
+## Models
+
+Set training data with selected features
+
+```python
+# select features as list of array
+X = data[['hour','dayOfWeek','isWeekend','temp','wind','weather']]
+X = X.to_numpy()
+X
+```
+
+Set prediction training data with results
+
+```python
+# set Distance values
+Y_distance = data['Distance']
+Y_distance = Y_distance.to_numpy()
+
+# set Ride Type Values
+Y_rideType = data['rideType']
+Y_rideType = Y_rideType.to_numpy()
+```
+
+**Linear Regression for Distance prediction**
+
+```python
+# example of training a final regression model
+from sklearn.linear_model import LinearRegression
+
+# fit final model
+model = LinearRegression()
+model.fit(X[0:160], Y_distance[0:160])
+
+# make a prediction
+Xnew = X[160:167]
+ynew = model.predict(Xnew)
+
+# show the inputs and predicted outputs
+for i in range(len(Xnew)):
+    j = 160
+    print("X=%s, Predicted=%s, Actual Distance=%s, Actual Ride Type=%s" % (Xnew[i], ynew[i],Y_distance[j+i],Y_rideType[j+i]))
+```
+
+**Logistic Regression for RideType Prediction**
+
+```python
+from sklearn.linear_model import LogisticRegression
+clf = LogisticRegression(random_state=0).fit(X, Y_rideType)
+result_ridetype = clf.predict([[8,6,1,20,3,0]])
+print("Result type prediction=%s" % result_ridetype)
+
+# test prediction
+result_ridetype = clf.predict([[8,6,1,10,12,1]])
+print("Result type prediction=%s" % result_ridetype)
+```
+
+**Export models as pickle file**
+
+```python
+import pickle
+
+# Save to file in the model folder
+distance_model_file = "../web/model/distance_model.pkl"
+with open(distance_model_file, 'wb') as file:
+    pickle.dump(model, file)
+    
+ridetype_model_file = "../web/model/ridetype_model.pkl"
+with open(ridetype_model_file, 'wb') as file:
+    pickle.dump(clf, file)
+```
+
+
 ## Solution
 
 This is end to end solution, using Strava workout data exports as input. Strava contains indoor and outdoor workout ride data. To analyse the data, Jupyter Notebook is used for `Data Cleaning`, `Data Pre-Processing`, `Model Training` and `Model Export. For machine learning model training and prediction scikit-learn is used. Prediction model is exported using scikit-learn to predict my ride type and distance of my workout.
