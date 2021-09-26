@@ -342,3 +342,7 @@ After you publish the bot you can connect with different conversational UI. I've
 Once you send first message, it's sending a card to pick `City`, `Date` and `Time` information to predict workout ride type and minimum distance.
 
 ![Bot on Microsoft Teams](images/data_driven_cycling_bot.png)
+
+## Conclusion
+
+This has been a personal journey to discover insights from my existing data, then it turns out to a digital personal trainer. For next steps, I would like to focus on setting weekly target and predicting workout schedule for the week based on my target.
