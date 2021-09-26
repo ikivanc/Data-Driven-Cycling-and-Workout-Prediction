@@ -18,7 +18,7 @@ I've decided to analyze my data and after analyzing I've decided to take this to
 
 This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook. There's another aim for this project to predict workout days and distance to find your routine using your own data. You can use this digital personal trainer as a workout companion.
 
-First this project started as data discovery of existing bulk data on Jupyter Notebook, during data exploration phase I saw some patterns and though that, these patterns can help me to get back to my shape again. Shortly after decided to build a predictive model to predict my workout, `ride type` and  `distance`, tried to find best possible fit for prediction. To use prediction model, exported as pickle file and serve that model in Python FastAPI then a chat bot on teams using the API helped me to provide some inputs and then retrieve prediction. 
+First this project started as data discovery of existing bulk data on Jupyter Notebook, during data exploration phase I saw some patterns and though that, these patterns can help me to get back to my shape again. Shortly after decided to build a predictive model to predict my workout, `ride type` and  `distance`, tried to find best possible fit for prediction. To use prediction model, exported as pickle file and serve that model in Python FastAPI then a chat bot on teams using the API helped me to provide some inputs and then retrieve prediction.
 
 ![architecture](images/architecture.png)
 
@@ -141,54 +141,53 @@ Y_rideType = data['rideType']
 Y_rideType = Y_rideType.to_numpy()
 ```
 
-**Linear Regression for Distance prediction**
+1. **Linear Regression for distance prediction**
 
-```python
-# example of training a final regression model
-from sklearn.linear_model import LinearRegression
+    ```python
+    # example of training a final regression model
+    from sklearn.linear_model import LinearRegression
 
-# fit final model
-model = LinearRegression()
-model.fit(X[0:160], Y_distance[0:160])
+    # fit final model
+    model = LinearRegression()
+    model.fit(X[0:160], Y_distance[0:160])
 
-# make a prediction
-Xnew = X[160:167]
-ynew = model.predict(Xnew)
+    # make a prediction
+    Xnew = X[160:167]
+    ynew = model.predict(Xnew)
 
-# show the inputs and predicted outputs
-for i in range(len(Xnew)):
-    j = 160
-    print("X=%s, Predicted=%s, Actual Distance=%s, Actual Ride Type=%s" % (Xnew[i], ynew[i],Y_distance[j+i],Y_rideType[j+i]))
-```
+    # show the inputs and predicted outputs
+    for i in range(len(Xnew)):
+        j = 160
+        print("X=%s, Predicted=%s, Actual Distance=%s, Actual Ride Type=%s" % (Xnew[i], ynew[i],Y_distance[j+i],Y_rideType[j+i]))
+    ```
 
-**Logistic Regression for RideType Prediction**
+2. **Logistic Regression for RideType Prediction**
 
-```python
-from sklearn.linear_model import LogisticRegression
-clf = LogisticRegression(random_state=0).fit(X, Y_rideType)
-result_ridetype = clf.predict([[8,6,1,20,3,0]])
-print("Result type prediction=%s" % result_ridetype)
+    ```python
+    from sklearn.linear_model import LogisticRegression
+    clf = LogisticRegression(random_state=0).fit(X, Y_rideType)
+    result_ridetype = clf.predict([[8,6,1,20,3,0]])
+    print("Result type prediction=%s" % result_ridetype)
 
-# test prediction
-result_ridetype = clf.predict([[8,6,1,10,12,1]])
-print("Result type prediction=%s" % result_ridetype)
-```
+    # test prediction
+    result_ridetype = clf.predict([[8,6,1,10,12,1]])
+    print("Result type prediction=%s" % result_ridetype)
+    ```
 
-**Export models as pickle file**
+3. **Export models as pickle file**
 
-```python
-import pickle
+    ```python
+    import pickle
 
-# Save to file in the model folder
-distance_model_file = "../web/model/distance_model.pkl"
-with open(distance_model_file, 'wb') as file:
-    pickle.dump(model, file)
-    
-ridetype_model_file = "../web/model/ridetype_model.pkl"
-with open(ridetype_model_file, 'wb') as file:
-    pickle.dump(clf, file)
-```
-
+    # Save to file in the model folder
+    distance_model_file = "../web/model/distance_model.pkl"
+    with open(distance_model_file, 'wb') as file:
+        pickle.dump(model, file)
+        
+    ridetype_model_file = "../web/model/ridetype_model.pkl"
+    with open(ridetype_model_file, 'wb') as file:
+        pickle.dump(clf, file)
+    ```
 
 ## Solution
 
@@ -282,9 +281,7 @@ Publish Python FastAPI to Azure Web App service
 
 ```bash
 cd web
-
 az webapp up --sku B1 --name data-driven-cycling
-
 ```
 
 Update startup command on Azure Portal,  
@@ -317,13 +314,24 @@ Or from Visual Studio
 * File -> Open -> Project/Solution
 * Navigate to `bot` folder
 * Select `CyclingPrediction.csproj` file
+* Update your api url in `Bots/Cycling.cs`
+  * If you would like to test with your local Web API change to your local endpoint such as:
+
+    ```csharp
+    string RequestURI = String.Format("http://127.0.0.1:8000/predict?city={0}&date={1}&time={2}",wCity,wDate,wTime);
+    ```
+
+  * If you'll test with your Azure Web API change to your azure endpoint such as:
+
+    ```csharp
+    string RequestURI = String.Format("https://yourwebsite.azurewebsites.net/predict?city={0}&date={1}&time={2}",wCity,wDate,wTime);
+    ```
+
 * Press `F5` to run the project
 
-Your bot service will be available at [https://localhost:3979](https://localhost:3979)
+* Your bot service will be available at [https://localhost:3979](https://localhost:3979). Run your Bot Framework Emulator and connect to [https://localhost:3979](https://localhost:3979) endpoint
 
-Run your Bot Framework Emulator and connect to [https://localhost:3979](https://localhost:3979) endpoint
-
-![Bot on Emulator for test](images/data_driven_cycling_bot_emulator.png)
+    ![Bot on Emulator for test](images/data_driven_cycling_bot_emulator.png)
 
 After that your bot is ready for interaction.
 
