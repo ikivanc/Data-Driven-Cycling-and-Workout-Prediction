@@ -47,9 +47,14 @@ def loadCorrelatedData():
     return df
 
 
-def saveData(updatedData):
+def saveCleanData(updatedData):
     updatedData.to_csv(filepath + 'activities_clean.csv', index=False)
-    print('Successfully saved!')
+    print('Clean data is successfully saved!')
+
+
+def saveCorrelatedData(updatedData):
+    updatedData.to_csv(filepath + 'activities_correlated.csv', index=False)
+    print('Correlated data is successfully saved!')
 
 
 def getFilename(fileextension):
