@@ -122,6 +122,8 @@ There is a nice [Machine Learning algorithm cheat sheet](https://docs.microsoft.
 
 ## Model Training
 
+For workout prediction, Machine Learning model training is added into [7 - b Predict Workout Model Training.ipynb](notebooks/7%20-%20b%20Predict%20Workout%20Model%20Training.ipynb) Jupyter notebook, here are some steps covering steps to train a model:
+
 First I set training data with selected features
 
 ```python
@@ -208,14 +210,18 @@ Y_rideType = Y_rideType.to_numpy()
 
 3. **Export models as pickle file**
 
+    After training these models exported as pickle files to use via Web API. Web API is using Weather API and providing necessary data features for prediction and returns results to users.
+
     ```python
+    # import pickle library
     import pickle
 
-    # Save to file in the model folder
+    # save distance model file in the model folder for prediction
     distance_model_file = "../web/model/distance_model.pkl"
     with open(distance_model_file, 'wb') as file:
         pickle.dump(model, file)
-        
+
+    # save ride type model file in the model folder for prediction
     ridetype_model_file = "../web/model/ridetype_model.pkl"
     with open(ridetype_model_file, 'wb') as file:
         pickle.dump(clf, file)
