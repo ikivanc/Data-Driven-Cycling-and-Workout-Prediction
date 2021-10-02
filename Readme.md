@@ -44,21 +44,21 @@ Let's have a look at some highlights I achieved so far, here are some highlights
 
 ## Correlation
 
-While I was checking ride types and over time I realized that after a point I only switched to Indoor Virtual Ride and I wanted to correlate with `Wind` and `Temperature`, I used a Weather API to retrieve Weather condition during my workouts and results were clear, I don't like cycling at cold, rainy weathers, so after a point I switched back to just Indroor Virtual Rides, and below graph shows that after a certain degree I picked Indoor Ride. This is one of the features, I have added into my model for prediction.
+While I was checking ride types and over time I realized that after a point I only switched to Indoor Virtual Ride and I wanted to correlate with `Wind` and `Temperature`, I used a Weather API to retrieve Weather condition during my workouts and results were clear, I don't like cycling at cold, rainy weathers, so after a point I switched back to just Indoor Virtual Rides, and below graph shows that after a certain degree I picked Indoor Ride. This is one of the features, I have added into my model for prediction.
 
 ![Distance per ride](images/ridetype_vs_temp.png)
 
 ## Feature Engineering
 
-I spent some time to visualize my ride data using Jupyter Notebook and I found some patterns. These patterns were either concious decisions by me or some decisions due to conditions.
+I spent some time to visualize my ride data using Jupyter Notebook and I found some patterns. These patterns were either conscious decisions by me or some decisions due to conditions.
 
-I decided to do excercise on [Feature Engineering](https://en.wikipedia.org/wiki/Feature_engineering)
+I decided to do exercise on [Feature Engineering](https://en.wikipedia.org/wiki/Feature_engineering)
 
 ### 1. Ride Type
 
 Ride type is a big factor for duration of the training and day of the training, so  I added a flag as if workout is a Outdoor Ride or Indoor Ride
 
-* rideType - boolean flag
+* `rideType` - boolean flag
 
 ### 2. Weather Condition
 
@@ -149,15 +149,15 @@ Y_rideType = Y_rideType.to_numpy()
     Now for logistic regression I am providing all data for training and fit my final model. Feature of the model using following features `['hour','dayOfWeek','isWeekend','temp','wind','weather']`.
 
     Training data features:
-    * `hour` - value between 0 - 23
-    * `dayOfWeek` - value between 0 - 6
-    * `isWeekend` - for weekdays 0, for weekend 1
-    * `temp` - integer temperature value in celsius
+    * `hour` - value between `0 - 23`
+    * `dayOfWeek` - value between `0 - 6`
+    * `isWeekend` - for weekdays `0`, for weekend `1`
+    * `temp` - integer temperature value in Celsius
     * `wind` - integer wind value in km/h
     * `weather` - weather description provided by Weather API
 
     Training prediction value:
-    * `rideType` - for outdoor cycling 0, for indoor cycling 1
+    * `rideType` - for outdoor cycling `0`, for indoor cycling `1`
 
     ```python
     # import Logistic Regression from sci-kit learn
@@ -180,10 +180,10 @@ Y_rideType = Y_rideType.to_numpy()
     For prediction model I have total 168 workout data and I would like to use 160 of them as training data and 8 of them as test data.
 
     Training data features:
-    * `hour` - value between 0 - 23
-    * `dayOfWeek` - value between 0 - 6
-    * `isWeekend` - for weekdays 0, for weekend 1
-    * `temp` - integer temperature value in celsius
+    * `hour` - value between `0 - 23`
+    * `dayOfWeek` - value between `0 - 6`
+    * `isWeekend` - for weekdays `0`, for weekend `1`
+    * `temp` - integer temperature value in Celsius
     * `wind` - integer wind value in km/h
     * `weather` - weather description provided by Weather API
 
@@ -216,12 +216,12 @@ Y_rideType = Y_rideType.to_numpy()
     ```python
     # import pickle library
     import pickle
-
+    
     # save distance model file in the model folder for prediction
     distance_model_file = "../web/model/distance_model.pkl"
     with open(distance_model_file, 'wb') as file:
         pickle.dump(model, file)
-
+    
     # save ride type model file in the model folder for prediction
     ridetype_model_file = "../web/model/ridetype_model.pkl"
     with open(ridetype_model_file, 'wb') as file:
@@ -234,7 +234,7 @@ This is end to end solution, using Strava workout data exports as input. Strava 
 
 Model, as a pickle file is hosted in a FastAPI, provides an API interface to pass parameters and predict weather information using 3rd party weather api and these values are used by model for prediction.
 
-For user interaction interface, I've created a Conversational AI project using BotFramework to communicate with Fast API. I picked Microsoft Teams to use as canvas, since everyday I'm regularly using this platform to communicate.
+For user interaction interface, I've created a Conversational AI project using Bot Framework to communicate with Fast API. I picked Microsoft Teams to use as canvas, since everyday I'm regularly using this platform to communicate.
 
 With this solution now I can select my city, workout date and time, these selections provide weather forecast and use these parameters with my prediction model to provide `Distance` and `ride type` predictions.
 
@@ -385,3 +385,4 @@ Once you send first message, it's sending a card to pick `City`, `Date` and `Tim
 ## Conclusion
 
 This has been a personal journey to discover insights from my existing data, then it turns out to a digital personal trainer. For next steps, I would like to focus on setting weekly target and predicting workout schedule for the week based on my target.
+
