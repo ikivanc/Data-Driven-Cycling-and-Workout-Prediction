@@ -164,14 +164,14 @@ Y_rideType = Y_rideType.to_numpy()
     from sklearn.linear_model import LogisticRegression
 
     # select training data and fit final model
-    clf = LogisticRegression(random_state=0).fit(X, Y_rideType)
+    model_lr = LogisticRegression(random_state=0).fit(X, Y_rideType)
 
     # test prediction with a clear sunny Sunday weather data
-    result_ridetype = clf.predict([[8,6,1,20,3,0]])
+    result_ridetype = model_lr.predict([[8,6,1,20,3,0]])
     print("Result type prediction=%s" % result_ridetype)
 
     # test prediction with a cold Sunday weather data
-    result_ridetype = clf.predict([[8,6,1,10,12,1]])
+    result_ridetype = model_lr.predict([[8,6,1,10,12,1]])
     print("Result type prediction=%s" % result_ridetype)
     ```
 
@@ -193,19 +193,20 @@ Y_rideType = Y_rideType.to_numpy()
     ```python
     # import Linear Regression from sci-kit learn
     from sklearn.linear_model import LinearRegression
+    from sklearn.utils import shuffle
 
     # select training data and fit final model
     model = LinearRegression()
-    model.fit(X[0:160], Y_distance[0:160])
+    model.fit(X, Y_distance)
 
     # select a slice of data to use as test data
-    Xtest = X[160:167]
+    j = 160
+    Xtest = X[j:j+10]
     Ytest = model.predict(Xtest)
 
     # show the inputs and predicted outputs
     for i in range(len(Xtest)):
-        j = 160
-        print("X=%s, Predicted=%s, Actual Distance=%s, Actual Ride Type=%s" % (Xtest[i], Ytest[i],Y_distance[j+i],Y_rideType[j+i]))
+        print("X=%s, Predicted=%f, Actual Distance=%s, Actual Ride Type=%s" % (Xtest[i], Ytest[i],Y_distance[j+i],Y_rideType[j+i]))
     ```
 
 3. **Export models as pickle file**
