@@ -1,4 +1,4 @@
-# Cycling Workout Prediction & Strava GPX Data Analysis
+# Data-Driven Cycling and Workout Prediction
 
 ## Overview
 
@@ -44,7 +44,7 @@ Let's have a look at some highlights I achieved so far, here are some highlights
 
 ## Correlation
 
-While I was checking ride type over time, I realized that after a point I only switched to Virtual Ride and I wanted to correlate with `Wind` and `Temperature, I used a Weather API to retrieve Weather condition during my workouts and results were clear, I don't like cycling at cold, rainy weathers, so after a point I switched back to just Virtual Rides, and below graph shows that after a certain degree I picked Virtual Ride. This is one of the features, I have added into my model for prediction.
+While I was checking ride types and over time I realized that after a point I only switched to Indoor Virtual Ride and I wanted to correlate with `Wind` and `Temperature`, I used a Weather API to retrieve Weather condition during my workouts and results were clear, I don't like cycling at cold, rainy weathers, so after a point I switched back to just Indroor Virtual Rides, and below graph shows that after a certain degree I picked Indoor Ride. This is one of the features, I have added into my model for prediction.
 
 ![Distance per ride](images/ridetype_vs_temp.png)
 
@@ -90,20 +90,22 @@ Especially for hot summer days I do prefer early outdoor rides where temperature
 
   ![Distance vs Hour of the day](images/distance_vs_hour.png)
 
-## Prediction Model Training
+## Prediction Models
 
 For my personal need and after data analysis I want to have prediction of my rides. I want to know `distance`, how many kilometers I'll ride and what will be the `ride type`, is it indoor ride or outdoor ride.
 
 I did some data analysis and had feature engineering to have prediction for `Distance` and `Ride Type`.
 
-### Ride Type Prediction
+### 1. Ride Type Prediction
 
 For mental preperation, there are differences between riding indoor and outdoor, so generally I do prepare myself and my ride equipments the day before for my workout based on my ride type. I do prefer going outside however I don't like rainy and cold weather as well so I want to find my optimum for the ride.
 
 This choice is also effecting my distance and hour of workout.
 It's a classification problem, so I have decided to pick `Logistic Regression` for predicting ride type.
 
-### Distance Prediction
+Set training data:
+
+### 2. Distance Prediction
 
 For weakly goals I set weekly distance goals to complete. To reach my target there are some out side factors such as at "what time of the day?", "How is the weather?", "Is it hot outside or cold outside?", "Is it windy?", "Is it weekend or weekday?"
 
@@ -118,18 +120,17 @@ I have decided to pick `Logistic Regression` for ride type and `Linear Regressio
 
 There is a nice [Machine Learning algorithm cheat sheet](https://docs.microsoft.com/en-us/azure/machine-learning/algorithm-cheat-sheet). You can learn more about ML algorithms and their applications.
 
-## Models
+## Model Training
 
-Set training data with selected features
+First I set training data with selected features
 
 ```python
 # select features as list of array
 X = data[['hour','dayOfWeek','isWeekend','temp','wind','weather']]
 X = X.to_numpy()
-X
 ```
 
-Set prediction training data with results
+Then set prediction training data with results
 
 ```python
 # set Distance values
@@ -143,22 +144,24 @@ Y_rideType = Y_rideType.to_numpy()
 
 1. **Linear Regression for distance prediction**
 
+    For prediction model I have total 168 workout data and I would like to use 160 of them as training data and 8 of them as test data.
+
     ```python
-    # example of training a final regression model
+    # import Linear Regression from sci-kit learn
     from sklearn.linear_model import LinearRegression
 
-    # fit final model
+    # Select training data and fit final model
     model = LinearRegression()
     model.fit(X[0:160], Y_distance[0:160])
 
-    # make a prediction
-    Xnew = X[160:167]
-    ynew = model.predict(Xnew)
+    # select a slice of data to use as test data
+    Xtest = X[160:167]
+    Ytest = model.predict(Xtest)
 
     # show the inputs and predicted outputs
-    for i in range(len(Xnew)):
+    for i in range(len(Xtest)):
         j = 160
-        print("X=%s, Predicted=%s, Actual Distance=%s, Actual Ride Type=%s" % (Xnew[i], ynew[i],Y_distance[j+i],Y_rideType[j+i]))
+        print("X=%s, Predicted=%s, Actual Distance=%s, Actual Ride Type=%s" % (Xtest[i], Ytest[i],Y_distance[j+i],Y_rideType[j+i]))
     ```
 
 2. **Logistic Regression for RideType Prediction**
