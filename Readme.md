@@ -146,6 +146,17 @@ Y_rideType = Y_rideType.to_numpy()
 
     Now for logistic regression I am providing all data for training and fit my final model. Feature of the model using following features `['hour','dayOfWeek','isWeekend','temp','wind','weather']`.
 
+    Training data features:
+    * `hour` - value between 0 - 23
+    * `dayOfWeek` - value between 0 - 6
+    * `isWeekend` - for weekdays 0, for weekend 1
+    * `temp` - integer temperature value in celsius
+    * `wind` - integer wind value in km/h
+    * `weather` - weather description provided by Weather API
+
+    Training prediction value:
+    * `rideType` - for outdoor cycling 0, for indoor cycling 1
+
     ```python
     # import Logistic Regression from sci-kit learn
     from sklearn.linear_model import LogisticRegression
@@ -166,6 +177,17 @@ Y_rideType = Y_rideType.to_numpy()
 
     For prediction model I have total 168 workout data and I would like to use 160 of them as training data and 8 of them as test data.
 
+    Training data features:
+    * `hour` - value between 0 - 23
+    * `dayOfWeek` - value between 0 - 6
+    * `isWeekend` - for weekdays 0, for weekend 1
+    * `temp` - integer temperature value in celsius
+    * `wind` - integer wind value in km/h
+    * `weather` - weather description provided by Weather API
+
+    Training prediction value:
+    * `distance` - distance value in kilometers.
+
     ```python
     # import Linear Regression from sci-kit learn
     from sklearn.linear_model import LinearRegression
@@ -183,7 +205,6 @@ Y_rideType = Y_rideType.to_numpy()
         j = 160
         print("X=%s, Predicted=%s, Actual Distance=%s, Actual Ride Type=%s" % (Xtest[i], Ytest[i],Y_distance[j+i],Y_rideType[j+i]))
     ```
-
 
 3. **Export models as pickle file**
 
