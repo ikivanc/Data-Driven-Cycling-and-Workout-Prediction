@@ -142,7 +142,27 @@ Y_rideType = data['rideType']
 Y_rideType = Y_rideType.to_numpy()
 ```
 
-1. **Linear Regression for distance prediction**
+1. **Logistic Regression for RideType Prediction**
+
+    Now for logistic regression I am providing all data for training and fit my final model. Feature of the model using following features `['hour','dayOfWeek','isWeekend','temp','wind','weather']`.
+
+    ```python
+    # import Logistic Regression from sci-kit learn
+    from sklearn.linear_model import LogisticRegression
+
+    # select training data and fit final model
+    clf = LogisticRegression(random_state=0).fit(X, Y_rideType)
+
+    # test prediction with a clear sunny Sunday weather data
+    result_ridetype = clf.predict([[8,6,1,20,3,0]])
+    print("Result type prediction=%s" % result_ridetype)
+
+    # test prediction with a cold Sunday weather data
+    result_ridetype = clf.predict([[8,6,1,10,12,1]])
+    print("Result type prediction=%s" % result_ridetype)
+    ```
+
+2. **Linear Regression for distance prediction**
 
     For prediction model I have total 168 workout data and I would like to use 160 of them as training data and 8 of them as test data.
 
@@ -150,7 +170,7 @@ Y_rideType = Y_rideType.to_numpy()
     # import Linear Regression from sci-kit learn
     from sklearn.linear_model import LinearRegression
 
-    # Select training data and fit final model
+    # select training data and fit final model
     model = LinearRegression()
     model.fit(X[0:160], Y_distance[0:160])
 
@@ -164,18 +184,6 @@ Y_rideType = Y_rideType.to_numpy()
         print("X=%s, Predicted=%s, Actual Distance=%s, Actual Ride Type=%s" % (Xtest[i], Ytest[i],Y_distance[j+i],Y_rideType[j+i]))
     ```
 
-2. **Logistic Regression for RideType Prediction**
-
-    ```python
-    from sklearn.linear_model import LogisticRegression
-    clf = LogisticRegression(random_state=0).fit(X, Y_rideType)
-    result_ridetype = clf.predict([[8,6,1,20,3,0]])
-    print("Result type prediction=%s" % result_ridetype)
-
-    # test prediction
-    result_ridetype = clf.predict([[8,6,1,10,12,1]])
-    print("Result type prediction=%s" % result_ridetype)
-    ```
 
 3. **Export models as pickle file**
 
