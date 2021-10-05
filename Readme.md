@@ -1,24 +1,26 @@
 # Data-Driven Cycling and Workout Prediction
 
+ In this repo I'll share how I turned data from my bike exercises into a Machine Learning based smart chat bot leveraging Microsoft Bot Framework and Microsoft Teams, which helps me achieve more with my training and be motivated all the time.
+
 ## Overview
 
-I started cycling with a foldable bike at end of January 2020 and I felt in love with cycling. I also love working with data so I've recorded all my rides to [Strava](www.strava.com) with [Withings Steel HR](https://www.withings.com/us/en/steel-hr) smart watch. 🚴🏻🚴🏻
+I started cycling with a foldable bike at end of January 2020 and I fell in love with cycling. I also love working with data so I've recorded all my rides to [Strava](www.strava.com) with [Withings Steel HR](https://www.withings.com/us/en/steel-hr) smart watch. 🚴🏻🚴🏻
 
-At the end of may I upgraded my city bike to a Gravel bike. I had great time with my new bike with outdoor activities until autumn.
+At the end of May I upgraded my city bike to a Gravel bike. I had great time with my new bike with outdoor activities until autumn.
 
 ![outdoor ride activities](images/outdoor_ride.png)
 
-After practicing outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com) using [Elite Arion AL13 roller](https://www.elite-it.com/en/products/home-trainers/rollers/arion) with [Misuro B+ sensor](https://www.elite-it.com/en/products/home-trainers/sensors/misuro-b). Zwift is a virtual environment where you connect with your 3D avatar to ride with other athletes real-time.
+After exercising outside with nice weather, for cold weather I setup a pain-cave at my home for virtual rides on [Zwift](www.zwift.com) using [Elite Arion AL13 roller](https://www.elite-it.com/en/products/home-trainers/rollers/arion) with [Misuro B+ sensor](https://www.elite-it.com/en/products/home-trainers/sensors/misuro-b). Zwift is a virtual environment where you connect with your 3D avatar to ride with other athletes real-time.
 
 ![indoor ride activities](images/indoor_ride.png)
 
-Also my Zwift account is also connected with Strava to collect all my ride data. I’ve completed **“3700km”** so far combining outdoor and indoor activities 🎉🎉
+My Zwift account is connected with Strava to collect all my ride data, and I’ve completed **“3700km”** so far combining outdoor and indoor activities 🎉🎉
 
 I've decided to analyze my data and after analyzing I've decided to take this to next level with my engineering capabilities.
 
-This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook. There's another aim for this project to predict workout days and distance to find your routine using your own data. You can use this digital personal trainer as a workout companion.
+This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook. Furthermore, this project aims to predict potential workout days and distance to find an optimal workout routine using your own data. This digital personal trainer can be used as a workout companion.
 
-First this project started as data discovery of existing bulk data on Jupyter Notebook, during data exploration phase I saw some patterns and though that, these patterns can help me to get back to my shape again. Shortly after decided to build a predictive model to predict my workout, `ride type` and  `distance`, tried to find best possible fit for prediction. To use prediction model, exported as pickle file and serve that model in Python FastAPI then a chat bot on teams using the API helped me to provide some inputs and then retrieve prediction.
+This project first started as a data discovery of existing bulk data on Jupyter Notebook. During data exploration phase I saw some patterns and thought that, these patterns could help me to get back in shape again. Shortly after, I've decided to build a predictive model to predict my workout, `ride type` and  `distance` values. To use the prediction model within a bot framework, the model is exported as pickle file, a FastAPI based app serves the model in Python and a chat bot on Microsoft Teams calling this API help me to provide some inputs and then retrieve prediction.
 
 ![architecture](images/architecture.png)
 
@@ -26,25 +28,32 @@ First this project started as data discovery of existing bulk data on Jupyter No
 
 Let's have a look at some highlights I achieved so far, here are some highlights about my data.
 
-1. In 1 year I've completed around **3700 km** including outdoor and indoor workout activities. Around 1 of 3rd is virtual ride on Zwift.
+1. In 1 year, I've completed around **3700 km** including outdoor and indoor workout activities. Around 1/3 is virtual rides on Zwift.
 
     ![distance per ride type](images/distance_per_ride_types.png)
 
-2. In 2019 I gain some fat, so after my activities and healthy food as a result I lost ~13kgs (~28lbs) during this time.
+2. In 2019, I gained some fat, but as a result of my physical activities and some healthy food, I lost ~13kgs (~28lbs) during this time.
 
     ![kg per month](images/kg_per_monh.png)
 
-3. I love this weekly graph showcasing all important life events happened in one year. Started with a passion then lockdown due to pandemic in Turkey, then enjoying riding then new year break challenge #Rapha500, then blessed with a new family member, then trying to find my old routine again, last but not least decided to build a personal trainer.
+3. I love below weekly graph showcasing all important life events happened in one year. 
+
+    * Jan-Mar: A lot of a passion for workout
+    * April-June: Pandemic and lockdown in Turkey
+    * June-December: Enjoying riding outdoor and indoor
+    * December: new year break challenge #Rapha500
+    * Jan: Blessed with a new family member :)
+    * Jan - March: Trying to find my old routine again, last but not least decided to build a personal trainer.
 
     ![Weekly total ride distance](images/distance_per_week.png)
 
-4. So far my longest distance in one ride is 62km, and I love this graph to show my performance over time.
+4. So far, my longest distance in one ride is 62km, and I love this graph showing my performance over time;
 
     ![Distance per ride](images/distance_per_ride.png)
 
 ## Correlation
 
-While I was checking ride types and over time I realized that after a point I only switched to Indoor Virtual Ride and I wanted to correlate with `Wind` and `Temperature`, I used a Weather API to retrieve Weather condition during my workouts and results were clear, I don't like cycling at cold, rainy weathers, so after a point I switched back to just Indoor Virtual Rides, and below graph shows that after a certain degree I picked Indoor Ride. This is one of the features, I have added into my model for prediction.
+While I was checking ride types, I realized that after a certain point I only switched to Indoor Virtual Ride and I wanted to see if there's a correlation between selecting indoor rides and the weather, specifically with `Wind` and `Temperature`. For that I used a Weather API to retrieve Weather condition during my workouts and results were clear; I don't like cycling at cold, rainy weathers, so after a point I switched back to just Indoor Virtual Rides. The graph below shows that below a certain temperature, I picked Indoor Ride. This is one of the features - I have added into my model for prediction.
 
 ![Distance per ride](images/ridetype_vs_temp.png)
 
@@ -52,17 +61,17 @@ While I was checking ride types and over time I realized that after a point I on
 
 I spent some time to visualize my ride data using Jupyter Notebook and I found some patterns. These patterns were either conscious decisions by me or some decisions due to conditions.
 
-I decided to do exercise on [Feature Engineering](https://en.wikipedia.org/wiki/Feature_engineering)
+I decided to do an exercise on [Feature Engineering](https://en.wikipedia.org/wiki/Feature_engineering)
 
 ### 1. Ride Type
 
-Ride type is a big factor for duration of the training and day of the training, so  I added a flag as if workout is a Outdoor Ride or Indoor Ride
+Ride type is a factor for impacting the duration and day of the training , so  I added a flag to signify whether a ride is a outdoor or indoor
 
 * `rideType` - boolean flag
 
 ### 2. Weather Condition
 
-As mentioned in [correlation](#correlation), weather is one of the feature that effects my workout plan:
+As mentioned in the [correlation](#correlation), weather is one of the factors that affect my workout plan:
 
 * `Temperature` - Celsius value as integer
 * `Wind` - km/h value as integer
@@ -70,7 +79,7 @@ As mentioned in [correlation](#correlation), weather is one of the feature that 
 
 ### 3. Day of the Week and Weekend
 
-When I plot distance over if it's weekend or weekdays, my longest rides were on the weekend, also public holidays were another factor but for my model however I haven't integrated those for now, I will include these into model too
+When I plotted the distance vs. weekend or weekdays, I found that my longest rides were on the weekend. Public holidays were another factor but for now, I've decided not to integrate those. 
 
 * `DayOfWeek` - integer
 
@@ -84,7 +93,7 @@ But mostly I picked Tuesday and Thursday as weekday short ride days, and decided
 
 ### 4. Hour of the Day
 
-Especially for hot summer days I do prefer early outdoor rides where temperature is cooler than noon time. So based on my plot hour of the day is effecting my ride and ride type as well so decided to add a feature for hour of the day
+In hot summer days, I prefer early outdoor rides when the temperature is cooler than noon time. Based on the following plot, the hour of the day is effecting my ride and ride type as well so I've decided to add a feature for hour of the day
 
 * `hour` - integer
 
@@ -92,39 +101,38 @@ Especially for hot summer days I do prefer early outdoor rides where temperature
 
 ## Prediction Models
 
-For my personal need and after data analysis I want to have prediction of my rides. I want to know `distance`, how many kilometers I'll ride and what will be the `ride type`, is it indoor ride or outdoor ride.
+For my personal need and following the data analysis I wish to have a prediction which outputs the `distance`, i.e. how many kilometers I'm expected to ride and the `ride type`, i.e. whether the planned ride is indoor or outdoor.
 
-I did some data analysis and had feature engineering to have prediction for `Distance` and `Ride Type`.
+Therefore, I used the previous data analysis and engineered features to create a prediction model for `Distance` and `Ride Type`.
 
 ### 1. Ride Type Prediction
 
-For mental preperation, there are differences between riding indoor and outdoor, so generally I do prepare myself and my ride equipments the day before for my workout based on my ride type. I do prefer going outside however I don't like rainy and cold weather as well so I want to find my optimum for the ride.
+For mental preparation, there are differences between riding indoor and outdoor, so generally I do prepare myself and my ride equipment the day before for my workout based on my ride type. I do prefer going outside however I don't like rainy and cold weather. In addition, I'd like to find the optimal the ride for my workout.
 
-This choice is also effecting my distance and hour of workout.
-It's a classification problem, so I have decided to pick `Logistic Regression` for predicting ride type.
+This choice is also affecting my distance and hour of workout.
+Since it's a classification problem, I have decided to pick `Logistic Regression` for predicting the ride type.
 
 Set training data:
 
 ### 2. Distance Prediction
 
-For weakly goals I set weekly distance goals to complete. To reach my target there are some out side factors such as at "what time of the day?", "How is the weather?", "Is it hot outside or cold outside?", "Is it windy?", "Is it weekend or weekday?"
+Every week, I set weekly distance goals I'd like to complete. The decision is also affected by external factors such as at "what time of the day?", "How is the weather?", "Is it hot outside or cold outside?", "Is it windy?", "Is it weekend or weekday?"
 
-After these questions I set my actual target, this is more like
-`Regression` problem and I've decided to pick `Linear Regression` for distance prection.
+Given these factors, I'd like to predict my expected ride distance. This is a `Regression` problem and I've decided to pick `Linear Regression` for distance prediction.
 
-For predicting **distance** and **ride type** I did a little bit feature engineering and pick some features. I below values effecting my ride type and distance as features for my model.
+For both models (predicting **distance** and **ride type**), here are the engineered features I've decided to use in my models:
 
 > `['hour','dayOfWeek','isWeekend','temp','wind','weather']`
 
-I have decided to pick `Logistic Regression` for ride type and `Linear Regression` for distance. Of course there can be more accurate models, it's an iterative process and whenever I collect more ride data and correlate with more data I would like to improve prediction accuracy, so this is just start.
+While I have decided to pick `Logistic Regression` for ride type and `Linear Regression` for distance, there could be more accurate models. The process of developing these models, is iterative and often requires more ride data, so this is just first step.
 
 There is a nice [Machine Learning algorithm cheat sheet](https://docs.microsoft.com/en-us/azure/machine-learning/algorithm-cheat-sheet). You can learn more about ML algorithms and their applications.
 
 ## Model Training
 
-For workout prediction, Machine Learning model training is added into [7 - b Predict Workout Model Training.ipynb](notebooks/7%20-%20b%20Predict%20Workout%20Model%20Training.ipynb) Jupyter notebook, here are some steps covering steps to train a model:
+For workout prediction, Machine Learning model training is added into [7 - b Predict Workout Model Training.ipynb](notebooks/7%20-%20b%20Predict%20Workout%20Model%20Training.ipynb) Jupyter notebook. Here are some steps covering steps to train a model:
 
-First I set training data with selected features
+First I set training data with selected features (X):
 
 ```python
 # select features as list of array
@@ -132,7 +140,7 @@ X = data[['hour','dayOfWeek','isWeekend','temp','wind','weather']]
 X = X.to_numpy()
 ```
 
-Then set prediction training data with results
+Then I create the training data's labels (Y):
 
 ```python
 # set Distance values
@@ -146,7 +154,7 @@ Y_rideType = Y_rideType.to_numpy()
 
 1. **Logistic Regression for RideType Prediction**
 
-    Now for logistic regression I am providing all data for training and fit my final model. Feature of the model using following features `['hour','dayOfWeek','isWeekend','temp','wind','weather']`.
+    For logistic regression I am providing all data for training and fit my final model. The model uses following features `['hour','dayOfWeek','isWeekend','temp','wind','weather']`.
 
     Training data features:
     * `hour` - value between `0 - 23`
@@ -194,24 +202,23 @@ Y_rideType = Y_rideType.to_numpy()
     # import Linear Regression from sci-kit learn
     from sklearn.linear_model import LinearRegression
     from sklearn.utils import shuffle
-
+    
     # select training data and fit final model
     model = LinearRegression()
     model.fit(X, Y_distance)
-
-    # select a slice of data to use as test data
-    j = 160
-    Xtest = X[j:j+10]
-    Ytest = model.predict(Xtest)
-
-    # show the inputs and predicted outputs
-    for i in range(len(Xtest)):
-        print("X=%s, Predicted=%f, Actual Distance=%s, Actual Ride Type=%s" % (Xtest[i], Ytest[i],Y_distance[j+i],Y_rideType[j+i]))
+    
+    # test prediction with a clear sunny Monday weather data
+    result_distance = model.predict([[8,0,1,20,3,0]])
+    print("Result distance prediction=%s" % result_distance)
+    
+    # test prediction with a cold Sunday weather data
+    result_distance = model.predict([[8,6,1,10,12,1]])
+    print("Result distance prediction=%s" % result_distance)
     ```
 
 3. **Export models as pickle file**
 
-    After training these models exported as pickle files to use via Web API. Web API is using Weather API and providing necessary data features for prediction and returns results to users.
+    At this phase the trained models are exported as pickle files to be used via a web API. The web API is consuming data from a Weather API, collects necessary data features for prediction and outputs the prediction to the user.
 
     ```python
     # import pickle library
@@ -230,13 +237,13 @@ Y_rideType = Y_rideType.to_numpy()
 
 ## Solution
 
-This is end to end solution, using Strava workout data exports as input. Strava contains indoor and outdoor workout ride data. To analyse the data, Jupyter Notebook is used for `Data Cleaning`, `Data Pre-Processing`, `Model Training` and `Model Export. For machine learning model training and prediction scikit-learn is used. Prediction model is exported using scikit-learn to predict my ride type and distance of my workout.
+This is an end-to-end solution, using Strava workout data exports as input. Strava contains indoor and outdoor workout ride data. To analyze the data, Jupyter Notebooks are used for `Data Cleaning`, `Data Pre-Processing`, `Model Training` and `Model Export. For machine learning model training and prediction, the scikit-learn Python package is used. The prediction model is exported by scikit-learn to predict my ride type and distance of my workout.
 
-Model, as a pickle file is hosted in a FastAPI, provides an API interface to pass parameters and predict weather information using 3rd party weather api and these values are used by model for prediction.
+The model, as a pickle file is hosted in a FastAPI app which provides an API to pass parameters and predict weather information using 3rd party weather API.  These values are used by model for prediction.
 
-For user interaction interface, I've created a Conversational AI project using Bot Framework to communicate with Fast API. I picked Microsoft Teams to use as canvas, since everyday I'm regularly using this platform to communicate.
+As a user interface, I've created a Conversational AI project using Microsoft Bot Framework to communicate with Fast API. I picked Microsoft Teams as canvas, since this is the platform I use regularly to communicate.
 
-With this solution now I can select my city, workout date and time, these selections provide weather forecast and use these parameters with my prediction model to provide `Distance` and `ride type` predictions.
+With this solution I now can select my city, workout date and time, and I get a prediction providing `distance` and `ride type` values.
 
 ### Architecture
 
@@ -384,5 +391,11 @@ Once you send first message, it's sending a card to pick `City`, `Date` and `Tim
 
 ## Conclusion
 
-This has been a personal journey to discover insights from my existing data, then it turns out to a digital personal trainer. For next steps, I would like to focus on setting weekly target and predicting workout schedule for the week based on my target.
+This has been a personal journey to discover insights from my existing data, then it turned out to a digital personal trainer. 
+
+For next steps I would like to focus on, 
+
+* Setting weekly target and predicting workout schedule for the week based on my target. If possible add as a Windows 11 widget
+* Compare ride metrics and see the improvement over time.
+* Supporting US metrics (now only supports km)
 
