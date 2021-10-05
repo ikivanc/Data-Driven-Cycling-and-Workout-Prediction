@@ -79,7 +79,7 @@ namespace CyclingPrediction.Bots
             try{
                 using (HttpClient client = new HttpClient()){
                     //Assuming that the api takes the user message as a query paramater
-                    string RequestURI = String.Format("https://datadrivencycling.azurewebsites.net/predict?city={0}&date={1}&time={2}",wCity,wDate,wTime);
+                    string RequestURI = String.Format("https://{your-cycling-bot-endpoint}.azurewebsites.net/predict?city={0}&date={1}&time={2}",wCity,wDate,wTime);
                     HttpResponseMessage responsemMsg = await client.GetAsync(RequestURI);
                     WorkoutPrediction predictionResult = new WorkoutPrediction();
                     if (responsemMsg.IsSuccessStatusCode){

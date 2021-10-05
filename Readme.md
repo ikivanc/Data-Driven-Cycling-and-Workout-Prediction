@@ -1,6 +1,6 @@
 # Data-Driven Cycling and Workout Prediction
 
- In this repo I'll share how I turned data from my bike exercises into a Machine Learning based smart chat bot leveraging Microsoft Bot Framework and Microsoft Teams, which helps me achieve more with my training and be motivated all the time.
+In this repo I'll share how I turned data from my bike exercises into a Machine Learning based smart bot leveraging Microsoft Bot Framework and Microsoft Teams, which helps me achieve more with my training and be motivated all the time.
 
 ## Overview
 
@@ -185,7 +185,7 @@ Y_rideType = Y_rideType.to_numpy()
 
 2. **Linear Regression for distance prediction**
 
-    For prediction model I have total 168 workout data and I would like to use 160 of them as training data and 8 of them as test data.
+    For prediction model I have total 168 workout data and I would like to use all of them as training data.
 
     Training data features:
     * `hour` - value between `0 - 23`
@@ -206,13 +206,13 @@ Y_rideType = Y_rideType.to_numpy()
     # select training data and fit final model
     model = LinearRegression()
     model.fit(X, Y_distance)
-    
-    # test prediction with a clear sunny Monday weather data
-    result_distance = model.predict([[8,0,1,20,3,0]])
+
+    # test prediction with a cold Monday weather data
+    result_distance = model.predict([[8,0,0,10,15,0]])
     print("Result distance prediction=%s" % result_distance)
     
-    # test prediction with a cold Sunday weather data
-    result_distance = model.predict([[8,6,1,10,12,1]])
+    # test prediction with a sunny Sunday weather data
+    result_distance = model.predict([[6,6,1,26,3,1]])
     print("Result distance prediction=%s" % result_distance)
     ```
 
