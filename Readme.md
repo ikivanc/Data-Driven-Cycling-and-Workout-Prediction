@@ -16,11 +16,11 @@ After exercising outside with nice weather, for cold weather I setup a pain-cave
 
 My Zwift account is connected with Strava to collect all my ride data, and I’ve completed **“3700km”** so far combining outdoor and indoor activities 🎉🎉
 
-I've decided to analyze my data and after analyzing I've decided to take this to next level with my engineering capabilities.
+I've decided to analyze my data and after analyzing I've decided to take this to the next level with my engineering capabilities.
 
-This repo shows how to analyze your Strava data and visualize it on Jupyter Notebook. Furthermore, this project aims to predict potential workout days and distance to find an optimal workout routine using your own data. This digital personal trainer can be used as a workout companion.
+This repo shows how to analyze your Strava data and visualize it using Jupyter Notebooks. Furthermore, this project aims to predict potential workout days and distance to find an optimal workout routine using your own data. This digital personal trainer can be used as a workout companion.
 
-This project first started as a data discovery of existing bulk data on Jupyter Notebook. During data exploration phase I saw some patterns and thought that, these patterns could help me to get back in shape again. Shortly after, I've decided to build a predictive model to predict my workout, `ride type` and  `distance` values. To use the prediction model within a bot framework, the model is exported as pickle file, a FastAPI based app serves the model in Python and a chat bot on Microsoft Teams calling this API help me to provide some inputs and then retrieve prediction.
+This project first started as a data discovery of existing bulk data on Jupyter Notebook. During data exploration phase I saw some patterns and thought that, these patterns could help me get back in shape again. Shortly after, I've decided to build a predictive model to predict my workout, `ride type` and  `distance` values. To use the prediction model within a bot framework, the model is exported as pickle file, a FastAPI based app serves the model in Python and a chat bot on Microsoft Teams calling this API help me to provide some inputs and then retrieve prediction.
 
 ![architecture](images/architecture.png)
 
@@ -28,7 +28,7 @@ This project first started as a data discovery of existing bulk data on Jupyter 
 
 Let's have a look at some highlights I achieved so far, here are some highlights about my data.
 
-1. In 1 year, I've completed around **3700 km** including outdoor and indoor workout activities. Around 1/3 is virtual rides on Zwift.
+1. In 1 year, I've completed around **3700 km** including outdoor and indoor workout activities. Around 1/3 are virtual rides on Zwift.
 
     ![distance per ride type](images/distance_per_ride_types.png)
 
@@ -36,14 +36,14 @@ Let's have a look at some highlights I achieved so far, here are some highlights
 
     ![kg per month](images/kg_per_monh.png)
 
-3. I love below weekly graph showcasing all important life events happened in one year. 
+3. I love below weekly graph showcasing all important life events happened in one year.
 
     * Jan-Mar: A lot of a passion for workout
     * April-June: Pandemic and lockdown in Turkey
     * June-December: Enjoying riding outdoor and indoor
     * December: new year break challenge #Rapha500
     * Jan: Blessed with a new family member :)
-    * Jan - March: Trying to find my old routine again, last but not least decided to build a personal trainer.
+    * Jan - March: Trying to find my old routine again, last but not least decided to build a digital personal trainer.
 
     ![Weekly total ride distance](images/distance_per_week.png)
 
@@ -79,7 +79,7 @@ As mentioned in the [correlation](#correlation), weather is one of the factors t
 
 ### 3. Day of the Week and Weekend
 
-When I plotted the distance vs. weekend or weekdays, I found that my longest rides were on the weekend. Public holidays were another factor but for now, I've decided not to integrate those. 
+When I plotted the distance vs. weekend or weekdays, I found that my longest rides were on the weekend. Public holidays were another factor but for now, I've decided not to integrate those.
 
 * `DayOfWeek` - integer
 
@@ -107,7 +107,7 @@ Therefore, I used the previous data analysis and engineered features to create a
 
 ### 1. Ride Type Prediction
 
-For mental preparation, there are differences between riding indoor and outdoor, so generally I do prepare myself and my ride equipment the day before for my workout based on my ride type. I do prefer going outside however I don't like rainy and cold weather. In addition, I'd like to find the optimal the ride for my workout.
+For mental preparation, there are differences between riding indoor and outdoor, so generally I do prepare myself and my ride equipment the day before my workout based on my ride type. I do prefer going outside however I don't like rainy and cold weather. In addition, I'd like to find the optimal the ride for my workout.
 
 This choice is also affecting my distance and hour of workout.
 Since it's a classification problem, I have decided to pick `Logistic Regression` for predicting the ride type.
@@ -116,7 +116,7 @@ Set training data:
 
 ### 2. Distance Prediction
 
-Every week, I set weekly distance goals I'd like to complete. The decision is also affected by external factors such as at "what time of the day?", "How is the weather?", "Is it hot outside or cold outside?", "Is it windy?", "Is it weekend or weekday?"
+Every week, I set weekly distance goals I'd like to complete. The decision is also affected by external factors such as at "what time of the day?", "How is the weather?", "Is it hot outside or cold outside?", "Is it windy?", "Is it weekend or a weekday?"
 
 Given these factors, I'd like to predict my expected ride distance. This is a `Regression` problem and I've decided to pick `Linear Regression` for distance prediction.
 
@@ -239,7 +239,7 @@ Y_rideType = Y_rideType.to_numpy()
 
 This is an end-to-end solution, using Strava workout data exports as input. Strava contains indoor and outdoor workout ride data. To analyze the data, Jupyter Notebooks are used for `Data Cleaning`, `Data Pre-Processing`, `Model Training` and `Model Export. For machine learning model training and prediction, the scikit-learn Python package is used. The prediction model is exported by scikit-learn to predict my ride type and distance of my workout.
 
-The model, as a pickle file is hosted in a FastAPI app which provides an API to pass parameters and predict weather information using 3rd party weather API.  These values are used by model for prediction.
+The model, as a pickle file is hosted through FastAPI app which provides an API to pass parameters and predict weather information using 3rd party weather API.  These values are used by the model for prediction.
 
 As a user interface, I've created a Conversational AI project using Microsoft Bot Framework to communicate with Fast API. I picked Microsoft Teams as canvas, since this is the platform I use regularly to communicate.
 
@@ -279,6 +279,12 @@ In this sample, Python 3.8.7 version is used, to run the project.
     python -m venv .venv
     ```
 
+1. Activate your virtual environment for Mac:
+
+    ```bash
+    source ./venv/bin/activate
+    ```
+
 1. Install dependencies
 
     ```bash
@@ -301,7 +307,7 @@ In this sample, Python 3.8.7 version is used, to run the project.
 
 ## Weather API
 
-Weather data was not avaiable to [correlate](#correlation) with my workouts, so I've used a weather API to extract weather information for my existing workout days. I've used [WorldWeatherOnline API](https://www.worldweatheronline.com/developer/) for The latest weather forecasts for my ride locations. This API also offers weather forecasts up to 14 days in advance, hourly forecasting and weather warnings so this is very helpful for my prediction API as well.
+Weather data was not available to [correlate](#correlation) with my workouts, so I've used a weather API to extract weather information for my existing workout days. I've used [WorldWeatherOnline API](https://www.worldweatheronline.com/developer/) for the latest weather forecasts for my ride locations. This API also offers weather forecasts up to 14 days in advance, hourly forecasting and weather warnings so this is very helpful for my prediction API as well.
 
 ## Python FastAPI Web Application for API
 
@@ -391,11 +397,10 @@ Once you send first message, it's sending a card to pick `City`, `Date` and `Tim
 
 ## Conclusion
 
-This has been a personal journey to discover insights from my existing data, then it turned out to a digital personal trainer. 
+This has been a personal journey to discover insights from my existing data, then it turned out to a digital personal trainer.
 
-For next steps I would like to focus on, 
+For next steps I would like to focus on,
 
-* Setting weekly target and predicting workout schedule for the week based on my target. If possible add as a Windows 11 widget
+* Setting a weekly target and predicting workout schedule for the week based on my target.
 * Compare ride metrics and see the improvement over time.
 * Supporting US metrics (now only supports km)
-
