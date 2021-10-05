@@ -1,0 +1,2 @@
+# add your weather api key and rename this file to myconfig.py
+api_key = "YOUR_WEATHER_API_KEY"
